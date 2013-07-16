@@ -1,4 +1,6 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
+from fitagift_frontend_app.views import spa
+
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -6,7 +8,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'fitagift_frontend_app.views.home', name='home'),
+    url(r'^$', spa),
     # url(r'^fitagift_frontend_app/', include('fitagift_frontend_app.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

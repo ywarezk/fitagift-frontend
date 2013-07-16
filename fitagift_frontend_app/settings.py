@@ -156,4 +156,4 @@ LOGGING = {
 }
 INSTALLED_APPS = INSTALLED_APPS + ('fitagift_frontend_app',)
 import os.path
-TEMPLATE_DIRS = TEMPLATE_DIRS + (os.path.join(os.path.dirname(__file__), 'templates').replace('\','/'),)
+TEMPLATE_DIRS = TEMPLATE_DIRS + (os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),)
