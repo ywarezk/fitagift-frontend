@@ -160,3 +160,9 @@ INSTALLED_APPS = INSTALLED_APPS + ('fitagift_frontend_app',)
 INSTALLED_APPS = INSTALLED_APPS + ('gunicorn',)
 import os.path
 TEMPLATE_DIRS = TEMPLATE_DIRS + (os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),)
+
+
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = os.environ['FITAGIFT_ENV_AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['FITAGIFT_ENV_AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['FITAGIFT_ENV_AWS_STORAGE_BUCKET_NAME']
