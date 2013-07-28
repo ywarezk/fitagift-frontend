@@ -1,22 +1,22 @@
 /*global Ember, DS */
 
-var App = window.App = Ember.Application.create();
+var Fitagift = window.Fitagift = Ember.Application.create({
 
-/* Order and include as you please. */
-// require('scripts/routes/*');
-// require('scripts/controllers/*');
-// require('scripts/models/*');
-// require('scripts/views/*');
-
-App.Router.map(function () {
-  // put your routes here
+	//@member {string} constant holds the dom element which the application be injected to
+    rootElement: '#wrap'
+    
 });
 
-App.Store = DS.Store.extend({
-});
+//application files
+require('scripts/views/nerdeez-view');
 
-App.IndexRoute = Ember.Route.extend({
-  model: function () {
-    return ['red', 'yellow', 'blue'];
-  }
-});
+//routes
+require('scripts/routes/nerdeez-routes');
+
+//store
+require('scripts/nerdeez-ember/tastypie_serializer');
+require('scripts/nerdeez-ember/tastypie_adapter');
+require('scripts/nerdeez-ember/porthole.min');
+require('scripts/nerdeez-ember/wormhole');
+require('scripts/store/fitagift-store');
+

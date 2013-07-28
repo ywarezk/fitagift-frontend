@@ -1,6 +1,13 @@
-@import "bootstrap-sass/lib/bootstrap";
+/**
+ * entry point for the compass project
+ * @author: Yariv Katz
+ * @copyright: nerdeez.com Ltd.
+ * @version: 1.0
+ *    
+ */
 
-/* Put your CSS here */
-html, body {
-    margin: 20px;
-}
+@import "bootstrap-sass/lib/bootstrap";
+@import "bootstrap-sass/lib/responsive";
+@import "compass/css3/images";
+@import "fitagift-styles/application";
+

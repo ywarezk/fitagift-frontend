@@ -1,3 +1,11 @@
-<h2>Welcome to Ember.js</h2>
-
-{{outlet}}
+<div class="container">
+    {{partial "header"}}
+    <div class="container top-buffer">
+	    <div class="row">
+		    <div class="span12">
+			    {{outlet}}
+			</div>
+		</div>
+	</div>
+</div>
+<div id="push"></div>

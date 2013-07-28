@@ -2,26 +2,14 @@
 
 /*global Ember, DS */
 
-var App = window.App = Ember.Application.create();
+var Fitagift = window.Fitagift = Ember.Application.create({
 
-/* Order and include as you please. */
-// require('scripts/routes/*');
-// require('scripts/controllers/*');
-// require('scripts/models/*');
-// require('scripts/views/*');
-
-App.Router.map(function () {
-  // put your routes here
+	//@member {string} constant holds the dom element which the application be injected to
+    rootElement: '#wrap'
+    
 });
 
-App.Store = DS.Store.extend({
-});
 
-App.IndexRoute = Ember.Route.extend({
-  model: function () {
-    return ['red', 'yellow', 'blue'];
-  }
-});
 
 
 })();
