@@ -26,7 +26,7 @@ module.exports = function (grunt) {
         watch: {
             emberTemplates: {
                 files: '<%= yeoman.app %>/templates/**/*.hbs',
-                tasks: ['emberTemplates', 'livereload']
+                tasks: ['emberTemplates']
             },
             coffee: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -42,34 +42,34 @@ module.exports = function (grunt) {
             },
             neuter: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-                tasks: ['neuter', 'livereload']
+                tasks: ['neuter']
             },
-            livereload: {
-                files: [
-                    '<%= yeoman.app %>/*.html',
-                    '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
-                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-                ],
-                tasks: ['livereload']
-            }
+            // livereload: {
+            //     files: [
+            //         '<%= yeoman.app %>/*.html',
+            //         '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+            //         '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+            //     ],
+            //     tasks: ['livereload']
+            // }
         },
         connect: {
             options: {
-                port: 9000,
+                port: process.env.PORT,
                 // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+                hostname: process.env.IP
             },
-            livereload: {
-                options: {
-                    middleware: function (connect) {
-                        return [
-                            lrSnippet,
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'app')
-                        ];
-                    }
-                }
-            },
+            // livereload: {
+            //     options: {
+            //         middleware: function (connect) {
+            //             return [
+            //                 lrSnippet,
+            //                 mountFolder(connect, '.tmp'),
+            //                 mountFolder(connect, 'app')
+            //             ];
+            //         }
+            //     }
+            // },
             test: {
                 options: {
                     middleware: function (connect) {
@@ -328,8 +328,8 @@ module.exports = function (grunt) {
             'clean:server',
             'concurrent:server',
             'neuter:app',
-            'livereload-start',
-            'connect:livereload',
+            // 'livereload-start',
+            // 'connect:livereload',
             'open',
             'watch'
         ]);
