@@ -7,29 +7,39 @@
 * @copyright: nerdeez.com Ltd.
 */
 
+/**
+ * create the adapter type class
+ */
+Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
+    /**
+     * adapter hook to set the server url
+     */
+    serverDomain : SERVER_URL,
+    
+    /**
+     * hook if we want to use cross domain communication
+     */
+    wormhole: Nerdeez.Wormhole,
+    
+    /**
+     * our serializer
+     */
+    serializer: Nerdeez.DjangoTastypieSerializer.extend({})
+})
+
+/**
+ * create instance of adapter
+ */
+adapter = Fitagift.Adapter.create();
+
 
 /**
  * handles backend communication
  */
-Fitagift.Store = DS.Store.extend({
+Fitagift.store = DS.Store.create({
 	
 	/**
 	 * our adapter
 	 */
-	adapter: Nerdeez.DjangoTastypieAdapter.extend({
-	    /**
-	     * adapter hook to set the server url
-	     */
-	    serverDomain : SERVER_URL,
-	    
-	    /**
-	     * hook if we want to use cross domain communication
-	     */
-	    wormhole: Nerdeez.Wormhole,
-	    
-	    /**
-	     * our serializer
-	     */
-	    serializer: Nerdeez.DjangoTastypieSerializer.extend({})
-	})
+	adapter: adapter
 });

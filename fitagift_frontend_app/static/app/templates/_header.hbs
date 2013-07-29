@@ -7,22 +7,24 @@ version: 1.0
 
 -->
 
-<header class="header">
-	<div class="container">
-		<div class="row">
-			<div class="span2">
-				<img {{bindAttr src="view.staticUrl"}} />
-			</div>
-			<div class="span5">
-				<ul class="nav nav-pills">
-					<li class="active">
-						<a href="/#">Home</a>
-					</li>
-					<li>
-						<a href="/#/about">About</a>
-					</li>
-				</ul>
-			</div>
+<div class="_header">
+	<div class="row">
+		<div class="span2 logo">
+			<img src="{{unbound view.staticUrl}}img/logo.png" />
+            <span>Fitting your gifts</span>
+		</div>
+		<div class="span5 pull-right menu">
+			<ul class="nav nav-pills pull-right">
+				<li>
+					<a href="/#/about">About</a>
+				</li>
+                <li>
+                    <a hred="#" >Contact Us</a>
+                </li>
+                <li class="active">
+    				<a href="/#">Home</a>
+				</li>
+			</ul>
 		</div>
 	</div>
-</header>
+</div>
