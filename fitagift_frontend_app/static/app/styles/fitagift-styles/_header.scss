@@ -1,0 +1,31 @@
+/**
+* styles for the header
+* @version: 1.0
+* @copyright: nerdeez.com Ltd
+* @author: Yariv Katz
+*/
+
+._header{
+    @include background(linear-gradient(to bottom, #3D3D3D, #454545));
+    @include border-radius(0px 0px 10px 10px);
+    .logo{
+        margin-bottom: 20px;
+        position: relative;
+        text-align: center;
+        top: 9px;
+        img{
+            height: 81px;
+            display: block;
+            margin: 0 auto;
+        }
+        span{
+            color:white;
+            font-family: Londrina Shadow;
+            font-size: 31px;
+        }
+    }
+    .menu{
+        position: relative;
+        top: 86px;
+    }
+}

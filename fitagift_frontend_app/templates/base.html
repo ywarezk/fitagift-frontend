@@ -5,13 +5,15 @@
         <title>FITAGIFT</title>
 
         <!-- build:css styles/main.css -->
-        <link rel="stylesheet" href="{{STATIC_URL}}.tmp/styles/style.css">
+        <link rel="stylesheet" href="{{STATIC_URL}}app/bower_components/compiled_app/styles/style.css">
         <!-- endbuild -->
+        
+        <link href='http://fonts.googleapis.com/css?family=Londrina+Shadow' rel='stylesheet' type='text/css'>
 	</head>
     <body>
 		<script type="text/javascript">
 			var SERVER_URL = '{{SERVER_URL}}';
-			var STATIC_URL = '{{STATIC_URL}}';
+			var STATIC_URL = '{{STATIC_URL}}app/';
 		</script>
         
         <div id="wrap">
@@ -31,11 +33,11 @@
         <!-- endbuild -->
 
         <!-- build:js(.tmp) scripts/templates.js -->
-        <script src="{{STATIC_URL}}.tmp/scripts/compiled-templates.js"></script>
+        <script src="{{STATIC_URL}}app/bower_components/compiled_app/scripts/compiled-templates.js"></script>
         <!-- endbuild -->
 
         <!-- build:js(.tmp) scripts/main.js -->
-        <script src="{{STATIC_URL}}.tmp/scripts/combined-scripts.js"></script>
+        <script src="{{STATIC_URL}}app/bower_components/compiled_app/scripts/combined-scripts.js"></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/plugins.js -->

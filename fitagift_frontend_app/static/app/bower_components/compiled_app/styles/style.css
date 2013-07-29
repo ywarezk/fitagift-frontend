@@ -6301,60 +6301,60 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 }
 
 @-webkit-keyframes progress-bar-stripes {
-  /* line 11, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 11, ../../bootstrap-sass/lib/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
 
-  /* line 12, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 12, ../../bootstrap-sass/lib/_progress-bars.scss */
   to {
     background-position: 0 0;
   }
 }
 
 @-moz-keyframes progress-bar-stripes {
-  /* line 17, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 17, ../../bootstrap-sass/lib/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
 
-  /* line 18, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 18, ../../bootstrap-sass/lib/_progress-bars.scss */
   to {
     background-position: 0 0;
   }
 }
 
 @-ms-keyframes progress-bar-stripes {
-  /* line 23, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 23, ../../bootstrap-sass/lib/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
 
-  /* line 24, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 24, ../../bootstrap-sass/lib/_progress-bars.scss */
   to {
     background-position: 0 0;
   }
 }
 
 @-o-keyframes progress-bar-stripes {
-  /* line 29, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 29, ../../bootstrap-sass/lib/_progress-bars.scss */
   from {
     background-position: 0 0;
   }
 
-  /* line 30, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 30, ../../bootstrap-sass/lib/_progress-bars.scss */
   to {
     background-position: 40px 0;
   }
 }
 
 @keyframes progress-bar-stripes {
-  /* line 35, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 35, ../../bootstrap-sass/lib/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
 
-  /* line 36, ../../app/bower_components/bootstrap-sass/lib/_progress-bars.scss */
+  /* line 36, ../../bootstrap-sass/lib/_progress-bars.scss */
   to {
     background-position: 0 0;
   }

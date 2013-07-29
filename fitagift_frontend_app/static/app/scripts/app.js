@@ -9,6 +9,7 @@ var Fitagift = window.Fitagift = Ember.Application.create({
 
 //application files
 require('scripts/views/nerdeez-view');
+require('scripts/views/application-view');
 
 //routes
 require('scripts/routes/nerdeez-routes');
