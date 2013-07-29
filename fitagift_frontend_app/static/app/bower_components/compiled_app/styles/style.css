@@ -8315,20 +8315,25 @@ html, body {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000313}}
 #push, #footer {
-  height: 60px;
+  height: 50px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000317}}
+#footer {
+  padding: 0 !important;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000321}}
 #wrap {
   height: auto !important;
-  margin: 0 auto -60px;
+  margin: 0 auto -51px;
   min-height: 100%;
 }
 
 /**
  *   top margins between rows and elements
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000330}}
 .top-buffer {
   margin-top: 20px;
 }
@@ -8336,18 +8341,18 @@ html, body {
 /**
  *   text input height
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000337}}
 .nerdeez-text-input {
   height: 30px !important;
   font-size: 20px !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000342}}
 .nerdeez-add-on {
   height: 30px !important;
   width: 30px !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000345}}
 .nerdeez-add-on i {
   font-size: 22px;
   position: relative;
@@ -8362,36 +8367,29 @@ html, body {
 */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_header\.scss}line{font-family:\000038}}
 ._header {
-  background: -webkit-gradient(linear, to bottom, to top, color-stop(0%, #3d3d3d), color-stop(100%, #454545));
-  background: -webkit-linear-gradient(to bottom, #3d3d3d, #454545);
-  background: -moz-linear-gradient(to bottom, #3d3d3d, #454545);
-  background: -o-linear-gradient(to bottom, #3d3d3d, #454545);
-  background: linear-gradient(to bottom, #3d3d3d, #454545);
-  -webkit-border-radius: 0px 0px 10px 10px;
-  -moz-border-radius: 0px 0px 10px 10px;
-  border-radius: 0px 0px 10px 10px;
+  /*@include background(linear-gradient(to bottom, #3D3D3D, #454545));
+  @include border-radius(0px 0px 10px 10px);*/
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_header\.scss}line{font-family:\0000311}}
 ._header .logo {
-  margin-bottom: 20px;
   position: relative;
-  text-align: center;
-  top: 9px;
+  top: 15px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_header\.scss}line{font-family:\0000313}}
+._header .logo img {
+  height: 51px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_header\.scss}line{font-family:\0000316}}
-._header .logo img {
-  height: 81px;
-  display: block;
-  margin: 0 auto;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_header\.scss}line{font-family:\0000321}}
 ._header .logo span {
+  position: relative;
+  top: 11px;
+  left: 6px;
   color: white;
   font-family: Londrina Shadow;
   font-size: 31px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_header\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_header\.scss}line{font-family:\0000323}}
 ._header .menu {
   position: relative;
-  top: 86px;
+  top: 32px;
 }
