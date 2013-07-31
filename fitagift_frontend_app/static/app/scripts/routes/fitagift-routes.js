@@ -16,3 +16,30 @@ Fitagift.Router.map(function () {
     this.route('privacy');
 });
 
+/**
+* route to about page
+*/
+Fitagift.AboutRoute = Ember.Route.extend({
+    model: function(param){
+        return Fitagift.Flatpage.find({'title' : 'about'});
+    }
+});
+
+/**
+* route to privacy page
+*/
+Fitagift.PrivacyRoute = Ember.Route.extend({
+    model: function(param){
+        return Fitagift.Flatpage.find({'title' : 'privacy'});
+    }
+});
+
+/**
+* route to terms page
+*/
+Fitagift.TermsRoute = Ember.Route.extend({
+    model: function(param){
+        return Fitagift.Flatpage.find({'title': 'terms'});
+    }
+});
+

@@ -59,7 +59,103 @@ Fitagift.ApplicationView = Fitagift.NerdeezView.extend({});
 
 (function() {
 
+/**
+ * views for the flat pages will be here
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ * @author: Yariv Katz
+ * 
+ */
+ 
+Fitagift.NerdeezFlatpage = Fitagift.NerdeezView.extend({
+    templateName: 'flatpage'
+});
+
+Fitagift.AboutView = Fitagift.NerdeezFlatpage.extend({
+});
+
+Fitagift.PrivacyView = Fitagift.NerdeezFlatpage.extend({
+});
+
+Fitagift.TermsView = Fitagift.NerdeezFlatpage.extend({
+});
+
+})();
+
+(function() {
+
+/**
+ * creates the model for the flat pages
+ * @author: Yariv Katz
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ * 
+ */
+ 
+/**
+* the flatpage model
+*/
+Fitagift.Flatpage = DS.Model.extend({
+    title:DS.attr('string'),
+    html: DS.attr('string')
+})
+
+})();
+
+(function() {
+
 //routes
+
+
+})();
+
+(function() {
+
+/**
+* this file will hold fit a gift application routes
+*
+* @copyright: nerdeez.com Ltd.
+* @version: 1.0
+* @author: Yariv Katz
+*/
+
+/**
+ * define the routes urls here
+ */
+Fitagift.Router.map(function () {
+    this.route('about');
+    this.route('contact');
+    this.route('terms');
+    this.route('privacy');
+});
+
+/**
+* route to about page
+*/
+Fitagift.AboutRoute = Ember.Route.extend({
+    model: function(param){
+        return Fitagift.Flatpage.find({'title' : 'about'});
+    }
+});
+
+/**
+* route to privacy page
+*/
+Fitagift.PrivacyRoute = Ember.Route.extend({
+    model: function(param){
+        return Fitagift.Flatpage.find({'title' : 'privacy'});
+    }
+});
+
+/**
+* route to terms page
+*/
+Fitagift.TermsRoute = Ember.Route.extend({
+    model: function(param){
+        return Fitagift.Flatpage.find({'title': 'terms'});
+    }
+});
+
 
 
 })();
