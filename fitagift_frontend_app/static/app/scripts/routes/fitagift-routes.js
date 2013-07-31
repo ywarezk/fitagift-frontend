@@ -10,6 +10,9 @@
  * define the routes urls here
  */
 Fitagift.Router.map(function () {
-  // put your routes here
+    this.route('about');
+    this.route('contact');
+    this.route('terms');
+    this.route('privacy');
 });
 

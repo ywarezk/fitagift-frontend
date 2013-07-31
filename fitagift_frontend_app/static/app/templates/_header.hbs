@@ -18,67 +18,24 @@ version: 1.0
     		<div class="nav-collapse menu">
     			<ul class="nav pull-right" id="main-nav">
     				<li class="nav-icon active">
-    					<a href="./index.html">
+    					{{#linkTo index}}
     						<i class="icon-home"></i>
     						<span>Home</span>        					
-    					</a>
+    					{{/linkTo}}
     				</li>
+    				<li>
+                        {{#linkTo about}}
+                        <i class="icon-info"></i>
+                        <span>About</span>
+                        {{/linkTo}}
+                    </li>
+                    <li>
+                        {{#linkTo contact}}
+                        <i class="icon-envelope"></i>
+                        <span>Contact Us</span>
+                        {{/linkTo}}
+                    </li>
     				
-    				<li class="dropdown">					
-    					<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
-    						<i class="icon-th"></i>
-    						<span>Components</span> 
-    						<b class="caret"></b>
-    					</a>	
-    				
-    					<ul class="dropdown-menu">
-    						<li><a href="./elements.html">Elements</a></li>
-    						<li><a href="./validation.html">Validation</a></li>
-    						<li><a href="./jqueryui.html">jQuery UI</a></li>
-    						<li><a href="./charts.html">Charts</a></li>
-    						<li><a href="./bonus.html">Bonus Elements</a></li>
-    						<li class="dropdown-submenu">
-    		                  <a href="#" tabindex="-1">Dropdown menu</a>
-    		                  <ul class="dropdown-menu">
-    		                    <li><a href="#" tabindex="-1">Second level link</a></li>
-    		                    <li><a href="#" tabindex="-1">Second level link</a></li>
-    		                    <li><a href="#" tabindex="-1">Second level link</a></li>
-    		                  </ul>
-    		                </li>
-    					</ul>    				
-    				</li>
-    				
-    				<li class="dropdown">					
-    					<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
-    						<i class="icon-copy"></i>
-    						<span>Sample Pages</span> 
-    						<b class="caret"></b>
-    					</a>	
-    				
-    					<ul class="dropdown-menu">
-    						<li><a href="./faq.html">FAQ</a></li>
-    						<li><a href="./gallery.html">Image Gallery</a></li>
-    						<li><a href="./pricing.html">Pricing Plans</a></li>
-    						<li><a href="./reports.html">Reports</a></li>
-    						<li><a href="./settings.html">Settings</a></li>
-    					</ul>    				
-    				</li>
-    				
-    				<li class="dropdown">					
-    					<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
-    						<i class="icon-external-link"></i>
-    						<span>Extras</span> 
-    						<b class="caret"></b>
-    					</a>	
-    				
-    					<ul class="dropdown-menu">							
-    						<li><a href="./login.html">Login</a></li>
-    						<li><a href="./signup.html">Signup</a></li>
-    						<li><a href="./error.html">Error</a></li>
-    						<li><a href="./skins.html">Skins</a></li>
-    						<li><a href="./sticky.html">Sticky Footer</a></li>
-    					</ul>    				
-    				</li>
     			</ul>
     			
     		</div> <!-- /.nav-collapse -->
