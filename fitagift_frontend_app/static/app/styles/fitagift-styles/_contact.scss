@@ -1,0 +1,36 @@
+/**
+ * stylesheet for the contact page
+ *
+ * Created August 2nd, 2013
+ * @author: Yariv Katz
+ * @copyright: nerdeez Ltd.
+ * @version: 1.0
+ */
+ 
+ .contact{
+    .field{
+        label{
+            display: block !important;
+        }
+        input[type="text"]{
+            padding-left: 12px;
+            width: 91%;
+        }
+        textarea{
+            padding-left: 12px;
+            width: 94%;
+            resize:none;
+            color: rgb(142, 141, 141);
+            font-family:'Open Sans';
+            font-size:13px;
+            font-weight:400;
+            font-style:normal;
+            font-size-adjust:none;
+            color:#8E8D8D;
+            line-height:18px;
+        }
+    }
+    .account-container{
+        margin-top: 36px !important;
+    }
+ }

@@ -70,10 +70,33 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 Ember.TEMPLATES["contact"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  
+  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<h1>contact us page</h1>");
+  data.buffer.push("<div class=\"contact\">\n    <div class=\"account-container login stacked\">\n	    <div class=\"content clearfix\">\n    		<form ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sendMessage", "on", "submit", {hash:{},contexts:[depth0,depth0,depth0],types:["STRING","ID","STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n    			<h1>Contact Us</h1>		\n    			<div class=\"login-fields\">\n    				<p>\n                        We would love to hear your thoughts on the site or bugs you found.\n                    </p>\n    				<div class=\"field\">\n    					<label for=\"email\">Email:</label>\n                        ");
+  hashContexts = {'placeholder': depth0,'name': depth0,'valueBinding': depth0,'class': depth0};
+  hashTypes = {'placeholder': "STRING",'name': "STRING",'valueBinding': "STRING",'class': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
+    'placeholder': ("email"),
+    'name': ("email"),
+    'valueBinding': ("email"),
+    'class': ("validate[custom[email]]")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n    				</div> <!-- /field -->\n    				<div class=\"field\">\n    					<label for=\"password\">Message:</label>\n                        ");
+  hashContexts = {'placeholder': depth0,'name': depth0,'valueBinding': depth0,'class': depth0};
+  hashTypes = {'placeholder': "STRING",'name': "STRING",'valueBinding': "STRING",'class': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextArea", {hash:{
+    'placeholder': ("Message"),
+    'name': ("message"),
+    'valueBinding': ("message"),
+    'class': ("validate[required]")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n    				</div>\n    			</div> <!-- /login-fields -->\n    			<div class=\"login-actions\">\n    				<button class=\"button btn btn-primary btn-large\">\n                    <i class=\"icon-envelope\"></i>\n                    Send\n                    </button>\n    			</div> <!-- .actions -->\n    		</form>\n	    </div>\n    </div>\n</div>");
+  return buffer;
   
 });
 

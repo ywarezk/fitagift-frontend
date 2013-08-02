@@ -8408,6 +8408,42 @@ html, body {
   top: 32px;
 }
 
+/**
+ * stylesheet for the contact page
+ *
+ * Created August 2nd, 2013
+ * @author: Yariv Katz
+ * @copyright: nerdeez Ltd.
+ * @version: 1.0
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000312}}
+.contact .field label {
+  display: block !important;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000315}}
+.contact .field input[type="text"] {
+  padding-left: 12px;
+  width: 91%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000319}}
+.contact .field textarea {
+  padding-left: 12px;
+  width: 94%;
+  resize: none;
+  color: #8e8d8d;
+  font-family: 'Open Sans';
+  font-size: 13px;
+  font-weight: 400;
+  font-style: normal;
+  font-size-adjust: none;
+  color: #8E8D8D;
+  line-height: 18px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000333}}
+.contact .account-container {
+  margin-top: 36px !important;
+}
+
 /* FONT PATH
  * -------------------------- */
 @font-face {
