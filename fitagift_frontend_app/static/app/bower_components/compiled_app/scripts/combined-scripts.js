@@ -24,36 +24,36 @@ var Fitagift = window.Fitagift = Ember.Application.create({
 * @version: 1.0
 */
 
-Fitagift.NerdeezView = Ember.View.extend({
- 
 /**
-* holds the static url
-* @type {{string}}
-* @public
-*/
-staticUrl: STATIC_URL,
-
+ * change the view to hold common elements in all my applications
+ */
+Ember.View.reopen({
+    
+    /**
+     * holds the static url
+     * @type {{string}}
+     * @public
+     */
+    staticUrl: STATIC_URL,
+    
+    /**
+     * will init the validation in all the forms containing validation class
+     */
+    didInsertElement: function(){
+        $('form.nerdeez-validation').validationEngine('attach');
+    },
+    
+    /**
+     * initiate a validation
+     * set the global variable isValid to true or false according to the validation result
+     */
+    validate: function(){
+        Fitagift.set('isValid', $('#' + this.elementId + ' form.nerdeez-validation').validationEngine('validate'));
+    }
 });
 
 
 
-})();
-
-(function() {
-
-/**
- * the application view file will be defined here
- * 
- * Created July 28th, 2013
- * @author: Yariv Katz
- * @copyright: nerdeez Ltd.
- * @version: 1.0
- * 
- */
- 
-Fitagift.ApplicationView = Fitagift.NerdeezView.extend({});
- 
- 
 
 })();
 
@@ -67,7 +67,7 @@ Fitagift.ApplicationView = Fitagift.NerdeezView.extend({});
  * 
  */
  
-Fitagift.NerdeezFlatpage = Fitagift.NerdeezView.extend({
+Fitagift.NerdeezFlatpage = Ember.View.extend({
     templateName: 'flatpage'
 });
 
@@ -99,6 +99,45 @@ Fitagift.Flatpage = DS.Model.extend({
     title:DS.attr('string'),
     html: DS.attr('string')
 })
+
+})();
+
+(function() {
+
+/**
+ * controller for the contact us page
+ * 
+ * Created August 2nd, 2013
+ * @version: 1.0
+ * @copyright: Nerdeez Ltd.
+ * @author: Yariv Katz
+ */
+ 
+Fitagift.ContactController = Ember.Controller.extend({
+    
+    /**
+     * binded to the message of the contact form
+     * @property
+     * @type string
+     */
+    message: null,
+    
+    /**
+     * binded to the email of the contact form
+     * @property
+     * @type string
+     */
+    email: null,
+    
+    /**
+     * when the user clicks the send message
+     */
+    sendMessage: function(){
+        if(Fitagift.get('isValid') == false)return;
+        console.log('sendMessage');    
+    }
+    
+});
 
 })();
 

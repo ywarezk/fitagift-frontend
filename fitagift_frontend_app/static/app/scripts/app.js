@@ -9,9 +9,9 @@ var Fitagift = window.Fitagift = Ember.Application.create({
 
 //application files
 require('scripts/views/nerdeez-view');
-require('scripts/views/application-view');
 require('scripts/views/flatpage-view');
 require('scripts/models/flatpage-model');
+require('scripts/controllers/contact');
 
 //routes
 require('scripts/routes/fitagift-routes');

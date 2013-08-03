@@ -77,7 +77,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "sendMessage", "on", "submit", {hash:{},contexts:[depth0,depth0,depth0],types:["STRING","ID","STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n    			<h1>Contact Us</h1>		\n    			<div class=\"login-fields\">\n    				<p>\n                        We would love to hear your thoughts on the site or bugs you found.\n                    </p>\n    				<div class=\"field\">\n    					<label for=\"email\">Email:</label>\n                        ");
+  data.buffer.push(" class=\"nerdeez-validation\">\n    			<h1>Contact Us</h1>		\n    			<div class=\"login-fields\">\n    				<p>\n                        We would love to hear your thoughts on the site or bugs you found.\n                    </p>\n    				<div class=\"field\">\n    					<label for=\"email\">Email:</label>\n                        ");
   hashContexts = {'placeholder': depth0,'name': depth0,'valueBinding': depth0,'class': depth0};
   hashTypes = {'placeholder': "STRING",'name': "STRING",'valueBinding': "STRING",'class': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
@@ -95,7 +95,13 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
     'valueBinding': ("message"),
     'class': ("validate[required]")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    				</div>\n    			</div> <!-- /login-fields -->\n    			<div class=\"login-actions\">\n    				<button class=\"button btn btn-primary btn-large\">\n                    <i class=\"icon-envelope\"></i>\n                    Send\n                    </button>\n    			</div> <!-- .actions -->\n    		</form>\n	    </div>\n    </div>\n</div>");
+  data.buffer.push("\n    				</div>\n    			</div> <!-- /login-fields -->\n    			<div class=\"login-actions\">\n    				<button class=\"button btn btn-primary btn-large\" ");
+  hashContexts = {'target': depth0};
+  hashTypes = {'target': "STRING"};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "validate", {hash:{
+    'target': ("view")
+  },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n                    <i class=\"icon-envelope\"></i>\n                    Send\n                    </button>\n    			</div> <!-- .actions -->\n    		</form>\n	    </div>\n    </div>\n</div>");
   return buffer;
   
 });

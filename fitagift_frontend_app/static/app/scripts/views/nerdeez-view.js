@@ -6,14 +6,32 @@
 * @version: 1.0
 */
 
-Fitagift.NerdeezView = Ember.View.extend({
- 
 /**
-* holds the static url
-* @type {{string}}
-* @public
-*/
-staticUrl: STATIC_URL,
-
+ * change the view to hold common elements in all my applications
+ */
+Ember.View.reopen({
+    
+    /**
+     * holds the static url
+     * @type {{string}}
+     * @public
+     */
+    staticUrl: STATIC_URL,
+    
+    /**
+     * will init the validation in all the forms containing validation class
+     */
+    didInsertElement: function(){
+        $('form.nerdeez-validation').validationEngine('attach');
+    },
+    
+    /**
+     * initiate a validation
+     * set the global variable isValid to true or false according to the validation result
+     */
+    validate: function(){
+        Fitagift.set('isValid', $('#' + this.elementId + ' form.nerdeez-validation').validationEngine('validate'));
+    }
 });
+
 

@@ -6,7 +6,7 @@
  * 
  */
  
-Fitagift.NerdeezFlatpage = Fitagift.NerdeezView.extend({
+Fitagift.NerdeezFlatpage = Ember.View.extend({
     templateName: 'flatpage'
 });
 
