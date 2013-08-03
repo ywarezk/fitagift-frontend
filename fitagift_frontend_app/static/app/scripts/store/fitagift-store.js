@@ -24,7 +24,9 @@ Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
     /**
      * our serializer
      */
-    serializer: Nerdeez.DjangoTastypieSerializer.extend({})
+    serializer: Nerdeez.DjangoTastypieSerializer.extend({}),
+    
+    stopLoadingFunction: function(){}
 })
 
 /**

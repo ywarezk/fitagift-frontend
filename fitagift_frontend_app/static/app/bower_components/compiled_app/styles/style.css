@@ -8373,6 +8373,11 @@ html, body {
   top: 4px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000363}}
+.info i {
+  margin-right: 20px;
+}
+
 /**
 * styles for the header
 * @version: 1.0
@@ -8442,6 +8447,28 @@ html, body {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000333}}
 .contact .account-container {
   margin-top: 36px !important;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000336}}
+.contact .login-actions {
+  float: none !important;
+  text-align: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000339}}
+.contact .login-actions button {
+  float: none !important;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000342}}
+.contact .login-actions .loading {
+  float: left;
+  margin-top: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000344}}
+.contact .login-actions .loading i.icon-spinner {
+  font-size: 31px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_contact\.scss}line{font-family:\0000349}}
+.contact form {
+  margin-bottom: 0 !important;
 }
 
 /* FONT PATH

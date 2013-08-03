@@ -43,13 +43,6 @@ Ember.View.reopen({
         $('form.nerdeez-validation').validationEngine('attach');
     },
     
-    /**
-     * initiate a validation
-     * set the global variable isValid to true or false according to the validation result
-     */
-    validate: function(){
-        Fitagift.set('isValid', $('#' + this.elementId + ' form.nerdeez-validation').validationEngine('validate'));
-    }
 });
 
 
@@ -130,13 +123,86 @@ Fitagift.ContactController = Ember.Controller.extend({
     email: null,
     
     /**
+     * used to pass message from server transaction
+     * @property
+     * @private
+     * @type {string}
+     */
+    statusMessage: 'test',
+    
+    /**
+     * used to inform on success transaction
+     * @property
+     * @private
+     * @type {boolean}
+     */
+    isSuccess: true,
+    
+    /**
+     * should i show the transaction status
+     * @property
+     * @private
+     * @type {boolean}
+     */
+    isShowStatus: false,
+    
+    /**
+     * set to true if we are moving to the loading state
+     * @property
+     * @private
+     * @type {boolean}
+     */
+    isLoading: false,
+    
+    /**
      * when the user clicks the send message
      */
     sendMessage: function(){
-        if(Fitagift.get('isValid') == false)return;
-        console.log('sendMessage');    
+        this.set('isLoading', true);
+        adapter = Fitagift.get('store.adapter');  
+        xthis = this;
+        var success = function(json){
+            xthis.set('isSuccess', json['success']);
+            xthis.set('isShowStatus', true);
+            xthis.set('isLoading', false);
+            xthis.set('statusMessage', json['message']);
+        }
+        var error = function(json){
+            if (json.hasOwnProperty('message')){
+                xthis.set('statusMessage', json['message']);
+            }
+            else{
+                xthis.set('statusMessage', 'Server communication error');
+            }
+            xthis.set('isSuccess', false);
+            xthis.set('isShowStatus', true);
+            xthis.set('isLoading', false);
+        }
+        adapter.ajax(SERVER_URL + '/api/v1/utilities/contact/', 'POST', {data: {mail: this.get('email'), message: this.get('message')}, success: success, error: error});
     }
     
+});
+
+})();
+
+(function() {
+
+/**
+ * the view for the contact page
+ * 
+ * Created August 3rd, 2013
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ * @author: Yariv Katz
+ */
+ 
+Fitagift.ContactView = Ember.View.extend({
+    sendMessage: function(){
+        if($('#' + this.elementId + ' form.nerdeez-validation').validationEngine('validate')){
+            controller = this.get('controller');
+            controller.sendMessage();
+        }
+    }
 });
 
 })();
@@ -167,6 +233,7 @@ Fitagift.Router.map(function () {
     this.route('terms');
     this.route('privacy');
 });
+
 
 /**
 * route to about page
@@ -426,6 +493,208 @@ Nerdeez.DjangoTastypieSerializer = DS.JSONSerializer.extend({
 (function() {
 
 /**
+ * put this in each handlebar block to see if this is not the first item of the array
+ * 
+ * usage
+ * 
+ * ```handlebar
+ * {{#each controller}}
+ *    {{notFirst this controller.content html="<div>Not the fist item in array</div>"}}
+ * {{/each}}
+ * ```
+ * 
+ * @param {DS.Model} item teh object to check in the each
+ * @param {DS.RecordArray} array - the arrays of objects to check from
+ * @param {Object} options {html: "the html if this is true"}
+ * @return {Handlebars.SafeString}
+ */
+Ember.Handlebars.registerBoundHelper('notFirst', function(item, array, options) {
+  firstObject = array.objectAt(0);
+  if(item != firstObject){
+      	//console.log('notFirst');
+	  	return new Ember.Handlebars.SafeString(options.hash.html);
+  }
+  return '';
+});
+
+/**
+ * put this in each handlebar block to check every time you reached the nth item 
+ * 
+ * usage
+ * 
+ * ```handlebar
+ * {{#each controller}}
+ *    {{modZero this controller.content mod="4" html='<div class="row-fluid">'}}
+ * {{/each}}
+ * ```
+ * 
+ * @param {DS.Model} item teh object to check in the each
+ * @param {DS.RecordArray} array - the arrays of objects to check from
+ * @param {Object} options {html: "the html if this is true", mod: "4"}
+ * @return {Handlebars.SafeString}
+ */
+Ember.Handlebars.registerBoundHelper('modZero', function(item, array, options) {
+	var whichItem = 0;
+	mod = options.hash.mod;
+	for(var i=0; i<array.get('length'); i++){
+		currentObject = array.objectAt(i);
+		if(item == currentObject){
+			whichItem = i;
+		}
+	}
+	if(whichItem%mod == 0){
+		//console.log('modZero');
+		return new Ember.Handlebars.SafeString(options.hash.html);
+	}
+	return '';
+});
+
+/**
+ * put this in each handlebar block to check every time you reached the nth item but if zero then ignore
+ * 
+ * usage
+ * 
+ * ```handlebar
+ * {{#each controller}}
+ *    {{modZero this controller.content mod="4" html='<div class="row-fluid">'}}
+ * {{/each}}
+ * ```
+ * 
+ * @param {DS.Model} item teh object to check in the each
+ * @param {DS.RecordArray} array - the arrays of objects to check from
+ * @param {Object} options {html: "the html if this is true", mod: "4"}
+ * @return {Handlebars.SafeString}
+ */
+Ember.Handlebars.registerBoundHelper('modZeroExcludeFirst', function(item, array, options) {
+	var whichItem = 0;
+	mod = options.hash.mod;
+	for(var i=0; i<array.get('length'); i++){
+		currentObject = array.objectAt(i);
+		if(item == currentObject){
+			whichItem = i;
+		}
+	}
+	if(whichItem%mod == 0 && whichItem != 0){
+		//console.log('modZeroExcludeFirst');
+		return new Ember.Handlebars.SafeString(options.hash.html);
+	}
+	return '';
+});
+
+/**
+ * put this in each handlebar block to check every time you reached the last item 
+ * 
+ * usage
+ * 
+ * ```handlebar
+ * {{#each controller}}
+ *    {{isLast this controller.content html="</div>"}}
+ * {{/each}}
+ * ```
+ * 
+ * @param {DS.Model} item teh object to check in the each
+ * @param {DS.RecordArray} array - the arrays of objects to check from
+ * @param {Object} options {html: "the html if this is true"}
+ * @return {Handlebars.SafeString}
+ */
+Ember.Handlebars.registerBoundHelper('isLast', function(item, array, options) {
+	if(item == array.objectAt(array.get('length') - 1) && array.get('isUpdating') == false){
+		//console.log('isLast');
+		return new Ember.Handlebars.SafeString(options.hash.html);
+	}
+	return '';	
+});
+
+/**
+ * put this in each handlebar block to check every time you're in the first item 
+ * 
+ * usage
+ * 
+ * ```handlebar
+ * {{#each controller}}
+ *    {{isFirst this controller.content html="<div>The first item of an array</div>"}}
+ * {{/each}}
+ * ```
+ * 
+ * @param {DS.Model} item teh object to check in the each
+ * @param {DS.RecordArray} array - the arrays of objects to check from
+ * @param {Object} options {html: "the html if this is true"}
+ * @return {Handlebars.SafeString}
+ */
+Ember.Handlebars.registerBoundHelper('isFirst', function(item, array, options) {
+	firstObject = array.objectAt(0);
+	if(item == firstObject){
+		//console.log('isFirst');
+		return new Ember.Handlebars.SafeString(options.hash.html);
+	}
+	return '';
+});
+
+/**
+ * put this in each handlebar block usually before the end of the form element
+ * to return the status from the form submition
+ * 
+ * usage
+ * 
+ * ```handlebar
+ * {{status controller messageBinding="message" isSuccessBinding="isSuccess" isShowBinding="isShowStatus"}}
+ * ```
+ * 
+ * the above will create a status info bind it to the controller and in the controller bind the properties: message, isSuccess, isShowStatus
+ * 
+ * @param {Ember.Object} the item which is bounded to the status paramaters
+ * @param {Object} options inside the hash we have {isShow: "true if need to show the status", isSuccess: "true if its a success status", message: 'the message to display'}
+ * @return {Handlebars.SafeString}
+ */
+Ember.Handlebars.registerBoundHelper('status', function(item, options) {
+    var isShow = options.hash.isShow;
+    var isSuccess = options.hash.isSuccess;
+    var message = options.hash.message;
+    var html = '';
+    if(isShow){
+        var html = '<div class="info">';
+        if(isSuccess){
+            html+='<div class="alert alert-success"><i class="icon-ok"></i>' + message + '</div>';
+        }
+        else{
+            html+='<div class="alert alert-danger"><i class="icon-remove"></i>' + message + '</div>';
+        }
+        html+='</div>';
+    }
+    return new Handlebars.SafeString(html);
+});
+
+/**
+ * 
+ * will put a loading roller and bind it to what is sent to the handlebar
+ * 
+ * usage
+ * 
+ * ```handlebar
+ * {{loading controller isLoadingBinding="isLoading"}}
+ * ```
+ * 
+ * the above will bind the loading screen to the controller isLoading property
+ * 
+ * @param {Ember.Object} the item which is bounded to the status paramaters
+ * @param {Object} options inside the hash we have {isLoading: "true if need to show the loading"}
+ * @return {Handlebars.SafeString}
+ */
+Ember.Handlebars.registerBoundHelper('loading', function(item, options) {
+    var isLoading = options.hash.isLoading;
+    var html = '';
+    if(isLoading){
+        var html = '<div class="loading"><i class="icon-spin icon-spinner"></i></div>';
+    }
+    return new Handlebars.SafeString(html);
+});
+
+
+})();
+
+(function() {
+
+/**
  * ember store adapter for server that returns a django - tastypie response
  * 
  * Example
@@ -454,7 +723,7 @@ var get = Ember.get, set = Ember.set;
 
 //create the namespace if the namespace doesnt exist
 if (typeof window.Nerdeez === "undefined"){
-	var Nerdeez = window.Nerdeez = Ember.Namespace.create();
+	var Nerdeez = Ember.Namespace.create();
 }
 else{
 	var Nerdeez = window.Nerdeez;
@@ -1133,7 +1402,9 @@ Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
     /**
      * our serializer
      */
-    serializer: Nerdeez.DjangoTastypieSerializer.extend({})
+    serializer: Nerdeez.DjangoTastypieSerializer.extend({}),
+    
+    stopLoadingFunction: function(){}
 })
 
 /**

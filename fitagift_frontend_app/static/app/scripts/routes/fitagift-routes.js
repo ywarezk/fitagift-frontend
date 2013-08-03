@@ -16,6 +16,7 @@ Fitagift.Router.map(function () {
     this.route('privacy');
 });
 
+
 /**
 * route to about page
 */

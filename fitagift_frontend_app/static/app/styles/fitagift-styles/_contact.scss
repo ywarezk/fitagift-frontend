@@ -33,4 +33,20 @@
     .account-container{
         margin-top: 36px !important;
     }
+    .login-actions{
+        float: none !important;
+        text-align: right;
+        button{
+            float: none !important;
+        }
+        .loading{
+            float: left; margin-top: 20px;
+            i.icon-spinner{
+                font-size: 31px;;
+            }
+        }
+    }
+    form{
+        margin-bottom: 0 !important;
+    }
  }

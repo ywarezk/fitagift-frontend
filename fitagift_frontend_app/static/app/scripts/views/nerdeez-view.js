@@ -25,13 +25,6 @@ Ember.View.reopen({
         $('form.nerdeez-validation').validationEngine('attach');
     },
     
-    /**
-     * initiate a validation
-     * set the global variable isValid to true or false according to the validation result
-     */
-    validate: function(){
-        Fitagift.set('isValid', $('#' + this.elementId + ' form.nerdeez-validation').validationEngine('validate'));
-    }
 });
 
 

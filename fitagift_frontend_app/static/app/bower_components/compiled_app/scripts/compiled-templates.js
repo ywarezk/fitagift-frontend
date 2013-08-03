@@ -70,14 +70,10 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 Ember.TEMPLATES["contact"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, hashContexts, hashTypes, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
-  data.buffer.push("<div class=\"contact\">\n    <div class=\"account-container login stacked\">\n	    <div class=\"content clearfix\">\n    		<form ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sendMessage", "on", "submit", {hash:{},contexts:[depth0,depth0,depth0],types:["STRING","ID","STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(" class=\"nerdeez-validation\">\n    			<h1>Contact Us</h1>		\n    			<div class=\"login-fields\">\n    				<p>\n                        We would love to hear your thoughts on the site or bugs you found.\n                    </p>\n    				<div class=\"field\">\n    					<label for=\"email\">Email:</label>\n                        ");
+  data.buffer.push("<div class=\"contact\">\n    <div class=\"account-container login stacked\">\n	    <div class=\"content clearfix\">\n    		<form class=\"nerdeez-validation\">\n    			<h1>Contact Us</h1>		\n    			<div class=\"login-fields\">\n    				<p>\n                        We would love to hear your thoughts on the site or bugs you found.\n                    </p>\n    				<div class=\"field\">\n    					<label for=\"email\">Email:</label>\n                        ");
   hashContexts = {'placeholder': depth0,'name': depth0,'valueBinding': depth0,'class': depth0};
   hashTypes = {'placeholder': "STRING",'name': "STRING",'valueBinding': "STRING",'class': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
@@ -95,13 +91,29 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
     'valueBinding': ("message"),
     'class': ("validate[required]")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    				</div>\n    			</div> <!-- /login-fields -->\n    			<div class=\"login-actions\">\n    				<button class=\"button btn btn-primary btn-large\" ");
+  data.buffer.push("\n    				</div>\n    			</div> <!-- /login-fields -->\n    			<div class=\"login-actions\">\n                    ");
+  hashContexts = {'isLoadingBinding': depth0};
+  hashTypes = {'isLoadingBinding': "STRING"};
+  options = {hash:{
+    'isLoadingBinding': ("isLoading")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.loading),stack1 ? stack1.call(depth0, "controller", options) : helperMissing.call(depth0, "loading", "controller", options))));
+  data.buffer.push("\n    				<button class=\"button btn btn-primary btn-large\" ");
   hashContexts = {'target': depth0};
   hashTypes = {'target': "STRING"};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "validate", {hash:{
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "sendMessage", {hash:{
     'target': ("view")
   },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n                    <i class=\"icon-envelope\"></i>\n                    Send\n                    </button>\n    			</div> <!-- .actions -->\n    		</form>\n	    </div>\n    </div>\n</div>");
+  data.buffer.push(">\n                    <i class=\"icon-envelope\"></i>\n                    Send\n                    </button>\n    			</div> <!-- .actions -->\n                ");
+  hashContexts = {'messageBinding': depth0,'isSuccessBinding': depth0,'isShowBinding': depth0};
+  hashTypes = {'messageBinding': "STRING",'isSuccessBinding': "STRING",'isShowBinding': "STRING"};
+  options = {hash:{
+    'messageBinding': ("statusMessage"),
+    'isSuccessBinding': ("isSuccess"),
+    'isShowBinding': ("isShowStatus")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.status),stack1 ? stack1.call(depth0, "controller", options) : helperMissing.call(depth0, "status", "controller", options))));
+  data.buffer.push("\n    		</form>\n	    </div>\n    </div>\n</div>");
   return buffer;
   
 });

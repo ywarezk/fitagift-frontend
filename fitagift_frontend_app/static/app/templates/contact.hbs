@@ -1,7 +1,7 @@
 <div class="contact">
     <div class="account-container login stacked">
 	    <div class="content clearfix">
-    		<form {{action "sendMessage" on "submit"}} class="nerdeez-validation">
+    		<form class="nerdeez-validation">
     			<h1>Contact Us</h1>		
     			<div class="login-fields">
     				<p>
@@ -31,11 +31,13 @@
     				</div>
     			</div> <!-- /login-fields -->
     			<div class="login-actions">
-    				<button class="button btn btn-primary btn-large" {{action "validate" target="view"}}>
+                    {{loading controller isLoadingBinding="isLoading"}}
+    				<button class="button btn btn-primary btn-large" {{action "sendMessage" target="view"}}>
                     <i class="icon-envelope"></i>
                     Send
                     </button>
     			</div> <!-- .actions -->
+                {{status controller messageBinding="statusMessage" isSuccessBinding="isSuccess" isShowBinding="isShowStatus"}}
     		</form>
 	    </div>
     </div>
