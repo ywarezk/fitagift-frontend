@@ -25,7 +25,7 @@ function program5(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "view.staticUrl", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("img/logo.png>\n                <span>Fitting your gifts</span>\n            </a>\n    	\n    		<div class=\"nav-collapse menu\">\n    			<ul class=\"nav pull-right\" id=\"main-nav\">\n    				<li class=\"nav-icon active\">\n    					");
+  data.buffer.push("img/logo.png>\n                <span>Fitting your gifts</span>\n            </a>\n    	\n    		<div class=\"nav-collapse menu\">\n    			<ul class=\"nav pull-right\" id=\"main-nav\">\n    				<li class=\"nav-icon\">\n    					");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};

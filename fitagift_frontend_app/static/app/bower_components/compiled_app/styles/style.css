@@ -8412,6 +8412,20 @@ html, body {
   position: relative;
   top: 32px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_header\.scss}line{font-family:\0000326}}
+._header .menu a.active {
+  display: block;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  box-shadow: none !important;
+  background: none repeat scroll 0% 0% white !important;
+  border-bottom-color: white !important;
+  color: #436d2f !important;
+  text-shadow: none;
+  text-shadow: none !important;
+  filter: none !important;
+}
 
 /**
  * stylesheet for the contact page
