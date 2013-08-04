@@ -1,0 +1,26 @@
+/**
+ * style sheet for the home page
+ * 
+ * Created August 4th, 2013
+ * @author: Yariv Katz
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ */
+ 
+.index{
+    .account-container{
+        width: 742px;
+        margin-top: 20px !important;
+        .explain{
+            text-align: center;
+        }
+        .button-container{
+            margin: 20px auto 0;
+            width: 200px;
+            i.icon-flag-checkered{
+                position: relative;
+                right: 14px;
+            }
+        }
+    }
+}

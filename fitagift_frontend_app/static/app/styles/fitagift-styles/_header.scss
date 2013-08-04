@@ -19,6 +19,9 @@
             font-family: Londrina Shadow;
             font-size: 31px;
         }
+        &:hover{
+            text-decoration: none !important;
+        }
     }
     .menu{
         position: relative;
@@ -33,6 +36,9 @@
             @include text-shadow(none);
             text-shadow: none !important;
             filter: none ! important;
+        }
+        li:last-child{
+            margin-right: 0 !important;
         }
     }
 }

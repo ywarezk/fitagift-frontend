@@ -10,35 +10,37 @@ version: 1.0
 <div class="_header" id="header">
     <div class="container">
     	<div class="row">
-            <a class="pull-left logo" href="/#/">
-                <img src={{unbound "view.staticUrl"}}img/logo.png>
-                <span>Fitting your gifts</span>
-            </a>
-    	
-    		<div class="nav-collapse menu">
-    			<ul class="nav pull-right" id="main-nav">
-    				<li class="nav-icon">
-    					{{#linkTo index}}
-    						<i class="icon-home"></i>
-    						<span>Home</span>        					
-    					{{/linkTo}}
-    				</li>
-    				<li>
-                        {{#linkTo about}}
-                        <i class="icon-info"></i>
-                        <span>About</span>
-                        {{/linkTo}}
-                    </li>
-                    <li>
-                        {{#linkTo contact}}
-                        <i class="icon-envelope"></i>
-                        <span>Contact Us</span>
-                        {{/linkTo}}
-                    </li>
-    				
-    			</ul>
-    			
-    		</div> <!-- /.nav-collapse -->
+            <div class="span12">
+                <a class="pull-left logo" href="/#/">
+                    <img src={{unbound "view.staticUrl"}}img/logo.png>
+                    <span>Fitting your gifts</span>
+                </a>
+        	
+        		<div class="nav-collapse menu">
+        			<ul class="nav pull-right" id="main-nav">
+        				<li class="nav-icon">
+        					{{#linkTo index}}
+        						<i class="icon-home"></i>
+        						<span>Home</span>        					
+        					{{/linkTo}}
+        				</li>
+        				<li>
+                            {{#linkTo about}}
+                            <i class="icon-info"></i>
+                            <span>About</span>
+                            {{/linkTo}}
+                        </li>
+                        <li>
+                            {{#linkTo contact}}
+                            <i class="icon-envelope"></i>
+                            <span>Contact Us</span>
+                            {{/linkTo}}
+                        </li>
+        				
+        			</ul>
+        			
+        		</div> <!-- /.nav-collapse -->
+            </div>
             
     	</div>
     </div>
