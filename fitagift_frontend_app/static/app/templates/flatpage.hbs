@@ -1,12 +1,14 @@
 <div class="flatpage">
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-            {{#each controller}}
-                <div class="hero-unit">
-                    {{{html}}}
+    <div class="account-container login stacked">
+        <div class="container">
+            <div class="row">
+                <div class="span12 content">
+                {{#each controller}}
+                    <div class="top-buffer">
+                        {{{html}}}
+                    </div>
+                {{/each}}
                 </div>
-            {{/each}}
             </div>
         </div>
     </div>

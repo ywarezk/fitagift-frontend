@@ -8516,9 +8516,31 @@ html, body {
   width: 200px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_index\.scss}line{font-family:\0000320}}
-.index .account-container .button-container i {
+.index .account-container .button-container i.icon-flag-checkered {
   position: relative;
   right: 14px;
+}
+
+/**
+ * stylesheet for the flat pages
+ *
+ * Created August 4th, 2013
+ * @author: Yariv Katz
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ *
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_flatpage\.scss}line{font-family:\0000312}}
+.flatpage .account-container.login.stacked {
+  width: 100% !important;
+  margin-top: 20px !important;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_flatpage\.scss}line{font-family:\0000315}}
+.flatpage .account-container.login.stacked .content {
+  padding-left: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* FONT PATH
