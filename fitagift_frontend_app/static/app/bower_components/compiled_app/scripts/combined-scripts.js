@@ -4,10 +4,44 @@
 
 var Fitagift = window.Fitagift = Ember.Application.create({
 
-	//@member {string} constant holds the dom element which the application be injected to
-    rootElement: '#wrap'
+    /**
+     * constant holds the dom element which the application be injected to
+     * @property
+     * @type {string}
+     * @private
+     */
+    rootElement: '#wrap',
+    
+    /**
+     * holds the array of answers the user chose
+     * @property
+     * @type {Array}
+     * @public
+     */
+    answers: [],
+    
+    /**
+     * holds the next 10 questions
+     * @property
+     * @type {DS.RecordArray}
+     * @public
+     */
+    questions: null,
+    
+    /**
+     * the current question we are at
+     */
+    currentQuestion: null
     
 });
+
+/**
+* application init function will get the first questions
+*/
+var readyFunction = function(){
+    this.set('questions', Fitagift.Question.find({order_by: 'grade'}));
+}
+Fitagift.set('ready', readyFunction);
 
 //application files
 
@@ -92,6 +126,48 @@ Fitagift.Flatpage = DS.Model.extend({
     title:DS.attr('string'),
     html: DS.attr('string')
 })
+
+})();
+
+(function() {
+
+/**
+ * the model for a single question
+ * 
+ * Created August 4th, 2013
+ * @author: Yariv Katz
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ */
+ 
+Fitagift.Question = DS.Model.extend({
+    title: DS.attr('string'),
+    text: DS.attr('string'),
+    grade: DS.attr('number'),
+    answers: DS.hasMany('Fitagift.Answer')
+});
+
+})();
+
+(function() {
+
+/**
+ * the model for  a single answer for a question
+ * 
+ * Created August 4th, 2013
+ * @author: Yariv Katz
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ */
+ 
+Fitagift.Answer = DS.Model.extend({
+    title: DS.attr('string'),
+    words: DS.attr('string'),
+    query_relevent_question: DS.attr('string'),
+    goto_question: DS.belongsTo('Fitagift.Question'),
+    belong_to_question: DS.belongsTo('Fitagift.Question'),
+    answer_to_question_relevent: DS.belongsTo('Fitagift.Question')
+});
 
 })();
 
@@ -188,6 +264,25 @@ Fitagift.ContactController = Ember.Controller.extend({
 (function() {
 
 /**
+ * controller for a question page
+ * 
+ * Created August 4th, 2013
+ * @author: Yariv Katz
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ */
+ 
+Fitagift.QuestionController = Ember.ObjectController.extend({
+    pickAnswer: function(answer){
+        console.log('pickAnswer');
+    }
+});
+
+})();
+
+(function() {
+
+/**
  * the view for the contact page
  * 
  * Created August 3rd, 2013
@@ -232,6 +327,8 @@ Fitagift.Router.map(function () {
     this.route('contact');
     this.route('terms');
     this.route('privacy');
+    this.route('question', {path: '/question/:question_id'});
+    this.route('questions');
 });
 
 
@@ -259,6 +356,38 @@ Fitagift.PrivacyRoute = Ember.Route.extend({
 Fitagift.TermsRoute = Ember.Route.extend({
     model: function(param){
         return Fitagift.Flatpage.find({'title': 'terms'});
+    }
+});
+
+/**
+ * route to a question page
+ */
+Fitagift.QuestionRoute = Ember.Route.extend({
+    model: function(param){
+        return Fitagift.Question.find(param.question_id);
+    }
+});
+
+/**
+ * this will redirect to the correct question based on the current question and the previous questions
+ */
+Fitagift.QuestionsRoute = Ember.Route.extend({
+    redirect: function(){
+        var questions = Fitagift.get('questions');
+        var currentQuestion = Fitagift.get('currentQuestion');
+        var nextQuestion = null;
+        if(currentQuestion == null){
+            nextQuestion = questions.objectAt(0);
+        }
+        else{
+            for(var i=0; i< questions.get('length'); i++){
+                question = quesitons.objectAt(i);
+                if(question.get('id') == currentQuestion.get('id')){
+                    nextQuestion = quesitons.objectAt(i+1);
+                }
+            }
+        }
+        this.transitionTo('question', nextQuestion);
     }
 });
 
@@ -1402,7 +1531,12 @@ Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
     /**
      * our serializer
      */
-    serializer: Nerdeez.DjangoTastypieSerializer.extend({}),
+    serializer: Nerdeez.DjangoTastypieSerializer.extend({
+        init: function(){
+            this._super();
+            this.mappings.set( 'Fitagift.Question', { answers: { embedded: 'load' } } );
+        }
+    }),
     
     stopLoadingFunction: function(){}
 })
@@ -1422,6 +1556,12 @@ Fitagift.store = DS.Store.create({
 	 * our adapter
 	 */
 	adapter: adapter
+});
+
+var serializer = adapter.get('serializer');
+
+serializer.configure('Fitagift.Answer', {
+    alias: 'answers'
 });
 
 })();

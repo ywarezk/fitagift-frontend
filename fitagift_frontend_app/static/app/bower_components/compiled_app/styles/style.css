@@ -8543,6 +8543,31 @@ html, body {
   box-sizing: border-box;
 }
 
+/**
+ * the stylesheet for a question page
+ *
+ * Created August 4th, 2013
+ * @author: Yariv Katz
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000311}}
+.question .button-container {
+  width: 67% !important;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000313}}
+.question .button-container button {
+  width: 40%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000316}}
+.question .button-container button:nth-of-type(2n) {
+  float: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000319}}
+.question .button-container button:nth-of-type(2n-1) {
+  float: left;
+}
+
 /* FONT PATH
  * -------------------------- */
 @font-face {

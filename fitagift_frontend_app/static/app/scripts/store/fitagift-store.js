@@ -24,7 +24,12 @@ Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
     /**
      * our serializer
      */
-    serializer: Nerdeez.DjangoTastypieSerializer.extend({}),
+    serializer: Nerdeez.DjangoTastypieSerializer.extend({
+        init: function(){
+            this._super();
+            this.mappings.set( 'Fitagift.Question', { answers: { embedded: 'load' } } );
+        }
+    }),
     
     stopLoadingFunction: function(){}
 })
@@ -44,4 +49,10 @@ Fitagift.store = DS.Store.create({
 	 * our adapter
 	 */
 	adapter: adapter
+});
+
+var serializer = adapter.get('serializer');
+
+serializer.configure('Fitagift.Answer', {
+    alias: 'answers'
 });

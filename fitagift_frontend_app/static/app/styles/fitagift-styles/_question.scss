@@ -1,0 +1,23 @@
+/**
+ * the stylesheet for a question page
+ *
+ * Created August 4th, 2013
+ * @author: Yariv Katz
+ * @version: 1.0
+ * @copyright: nerdeez Ltd.
+ */
+ 
+.question{
+    .button-container{
+        width: 67% !important;
+        button{
+            width: 40%;
+        }
+        button:nth-of-type(2n){
+            float: right;
+        }
+        button:nth-of-type(2n-1){
+            float: left;
+        }
+    }
+}

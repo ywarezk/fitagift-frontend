@@ -14,6 +14,8 @@ Fitagift.Router.map(function () {
     this.route('contact');
     this.route('terms');
     this.route('privacy');
+    this.route('question', {path: '/question/:question_id'});
+    this.route('questions');
 });
 
 
@@ -41,6 +43,38 @@ Fitagift.PrivacyRoute = Ember.Route.extend({
 Fitagift.TermsRoute = Ember.Route.extend({
     model: function(param){
         return Fitagift.Flatpage.find({'title': 'terms'});
+    }
+});
+
+/**
+ * route to a question page
+ */
+Fitagift.QuestionRoute = Ember.Route.extend({
+    model: function(param){
+        return Fitagift.Question.find(param.question_id);
+    }
+});
+
+/**
+ * this will redirect to the correct question based on the current question and the previous questions
+ */
+Fitagift.QuestionsRoute = Ember.Route.extend({
+    redirect: function(){
+        var questions = Fitagift.get('questions');
+        var currentQuestion = Fitagift.get('currentQuestion');
+        var nextQuestion = null;
+        if(currentQuestion == null){
+            nextQuestion = questions.objectAt(0);
+        }
+        else{
+            for(var i=0; i< questions.get('length'); i++){
+                question = quesitons.objectAt(i);
+                if(question.get('id') == currentQuestion.get('id')){
+                    nextQuestion = quesitons.objectAt(i+1);
+                }
+            }
+        }
+        this.transitionTo('question', nextQuestion);
     }
 });
 

@@ -1,0 +1,21 @@
+<div class="index question">
+    <div class="account-container login stacked">
+        <div class="">
+            <div class="">
+                <div class="explain top-buffer">
+                    <h1>
+                    {{title}}
+                    </h1>
+                    <h5>
+                    {{text}}
+                    </h5>
+                </div>
+                <div class="button-container top-buffer clearfix">
+                {{#each answers}}
+                    <button class="btn btn-large btn-primary btn-block btn-big-block" {{action "pickAnswer" this}}>{{title}}</button>
+                {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

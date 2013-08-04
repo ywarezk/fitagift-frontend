@@ -2,16 +2,53 @@
 
 var Fitagift = window.Fitagift = Ember.Application.create({
 
-	//@member {string} constant holds the dom element which the application be injected to
-    rootElement: '#wrap'
+    /**
+     * constant holds the dom element which the application be injected to
+     * @property
+     * @type {string}
+     * @private
+     */
+    rootElement: '#wrap',
+    
+    /**
+     * holds the array of answers the user chose
+     * @property
+     * @type {Array}
+     * @public
+     */
+    answers: [],
+    
+    /**
+     * holds the next 10 questions
+     * @property
+     * @type {DS.RecordArray}
+     * @public
+     */
+    questions: null,
+    
+    /**
+     * the current question we are at
+     */
+    currentQuestion: null
     
 });
+
+/**
+* application init function will get the first questions
+*/
+var readyFunction = function(){
+    this.set('questions', Fitagift.Question.find({order_by: 'grade'}));
+}
+Fitagift.set('ready', readyFunction);
 
 //application files
 require('scripts/views/nerdeez-view');
 require('scripts/views/flatpage-view');
 require('scripts/models/flatpage-model');
+require('scripts/models/question-model');
+require('scripts/models/answer-model');
 require('scripts/controllers/contact-controller');
+require('scripts/controllers/question-controller');
 require('scripts/views/contact-view');
 
 //routes
