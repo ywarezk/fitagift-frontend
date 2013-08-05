@@ -28,8 +28,18 @@ var Fitagift = window.Fitagift = Ember.Application.create({
     
     /**
      * the current question we are at
+     * @property
+     * @type {DS.Model}
      */
-    currentQuestion: null
+    currentQuestion: null,
+    
+    /**
+     * will put a global loading screen
+     * @property
+     * @type {boolean}
+     * @public
+     */
+     isLoading: true
     
 });
 
@@ -37,13 +47,18 @@ var Fitagift = window.Fitagift = Ember.Application.create({
 * application init function will get the first questions
 */
 var readyFunction = function(){
-    this.set('questions', Fitagift.Question.find({order_by: 'grade'}));
+    questions = Fitagift.Question.find({order_by: 'grade'});
+    questions.on('didLoad', function(){
+        Fitagift.set('isLoading', false); 
+        Fitagift.set('questions', questions);
+    });
 }
 Fitagift.set('ready', readyFunction);
 
 //application files
 require('scripts/views/nerdeez-view');
 require('scripts/views/flatpage-view');
+require('scripts/views/questions-id-view');
 require('scripts/models/flatpage-model');
 require('scripts/models/question-model');
 require('scripts/models/answer-model');

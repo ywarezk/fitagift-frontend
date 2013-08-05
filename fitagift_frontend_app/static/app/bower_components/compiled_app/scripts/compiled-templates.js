@@ -58,11 +58,18 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.partial),stack1 ? stack1.call(depth0, "header", options) : helperMissing.call(depth0, "partial", "header", options))));
-  data.buffer.push("\n<div class=\"container\">\n    <div class=\"container top-buffer\">\n	    <div class=\"row\">\n		    <div class=\"span12\">\n			    ");
+  data.buffer.push("\n<div class=\"container application\">\n    ");
+  hashContexts = {'isLoadingBinding': depth0};
+  hashTypes = {'isLoadingBinding': "STRING"};
+  options = {hash:{
+    'isLoadingBinding': ("Fitagift.isLoading")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.loading),stack1 ? stack1.call(depth0, "Fitagift", options) : helperMissing.call(depth0, "loading", "Fitagift", options))));
+  data.buffer.push("\n    <div class=\"container top-buffer\">\n	    <div class=\"row\">\n		    <div class=\"span12\">\n			    ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n			</div>\n		</div>\n	</div>\n</div>\n<div id=\"push\"></div>");
+  data.buffer.push("\n			</div>\n		</div>\n	</div>\n</div>\n<div id=\"push\"></div>\n\n    ");
   return buffer;
   
 });
