@@ -11,9 +11,16 @@
                     </h5>
                 </div>
                 <div class="button-container top-buffer clearfix">
-                {{#each answers}}
-                    <button class="btn btn-large btn-primary btn-block btn-big-block" {{action "pickAnswer" this}}>{{title}}</button>
-                {{/each}}
+                {{#if question_type==1}}
+                    {{#each answers}}
+                        <button class="btn btn-large btn-primary btn-block btn-big-block" {{action "pickAnswer" this}}>
+                        {{#if icon_class}}
+                        <i class="{{unbound icon_class}}" ></i>
+                        {{/if}}
+                        {{title}}
+                        </button>
+                    {{/each}}
+                {{/if}}
                 </div>
             </div>
         </div>

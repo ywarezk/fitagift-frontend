@@ -7,11 +7,12 @@
  * @copyright: nerdeez Ltd.
  */
  
+var Fitagift = window.Fitagift;
+var DS = window.DS;
 Fitagift.Answer = DS.Model.extend({
     title: DS.attr('string'),
     words: DS.attr('string'),
     query_relevent_question: DS.attr('string'),
-    goto_question: DS.belongsTo('Fitagift.Question'),
-    belong_to_question: DS.belongsTo('Fitagift.Question'),
-    answer_to_question_relevent: DS.belongsTo('Fitagift.Question')
+    goto_question: DS.attr('number'),
+    icon_class: DS.attr('string')
 });

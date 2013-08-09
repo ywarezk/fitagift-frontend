@@ -13,3 +13,11 @@
 {"ts":1375644898828,"patch":[[{"diffs":[[0,"tion(){\n"],[1,"            this._super();\n"],[0,"        "]],"start1":606,"start2":606,"length1":16,"length2":43}]],"length":997,"saved":false}
 {"ts":1375645391728,"patch":[[{"diffs":[[0,"pter\n});"],[1,"\n\nvar serializer = adapter.get('serializer');\n\nserializer.configure('Fitagift.Answer', {\nalias: 'answers'\n});"]],"start1":989,"start2":989,"length1":8,"length2":117}]],"length":1106,"saved":false}
 {"ts":1375645483218,"patch":[[{"diffs":[[0,"wer', {\n"],[1,"    "],[0,"alias: '"]],"start1":1078,"start2":1078,"length1":16,"length2":20}]],"length":1110,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1376042016741,"patch":[[{"diffs":[[0," } } );\n"],[1,"            this.mappings.set( 'Fitagift.Answer', { goto_question: { embedded: 'load' } } );\n"],[0,"        "]],"start1":722,"start2":722,"length1":16,"length2":109}]],"length":1203,"saved":false}
+{"ts":1376042131493,"patch":[[{"diffs":[[0,"ter\n */\n"],[1,"var "],[0,"adapter "]],"start1":918,"start2":918,"length1":16,"length2":20}]],"length":1207,"saved":false}
+{"ts":1376042146119,"patch":[[{"diffs":[[0,"e class\n */\n"],[1," var Fitagift = window.Fitagift;\nvar Ember = window.Ember;\n"],[0,"Fitagift.Ada"]],"start1":218,"start2":218,"length1":24,"length2":83}]],"length":1266,"saved":false}
+{"ts":1376042176590,"patch":[[{"diffs":[[0,"ft;\nvar "],[-1,"Ember"],[1,"Nerdeez"],[0," = windo"]],"start1":259,"start2":259,"length1":21,"length2":23},{"diffs":[[0,"dow."],[-1,"Ember"],[1,"Nerdeez"],[0,";\nFi"]],"start1":280,"start2":280,"length1":13,"length2":15}]],"length":1270,"saved":false}
+{"ts":1376042194131,"patch":[[{"diffs":[[0,"erdeez;\n"],[1,"var SERVER_URL = window.SERVER_URL;\n"],[0,"Fitagift"]],"start1":285,"start2":285,"length1":16,"length2":52}]],"length":1306,"saved":false}
+{"ts":1376042208389,"patch":[[{"diffs":[[0,"ER_URL;\n"],[1,"var DS = window.DS;\n"],[0,"Fitagift"]],"start1":321,"start2":321,"length1":16,"length2":36}]],"length":1326,"saved":false}
+{"ts":1376042217306,"patch":[[{"diffs":[[0,"n(){}\n})"],[1,";"],[0,"\n\n/**\n *"]],"start1":997,"start2":997,"length1":16,"length2":17}]],"length":1327,"saved":false}
+{"ts":1376042223361,"patch":[[{"diffs":[[0,"ass\n */\n"],[-1," "],[0,"var Fita"]],"start1":222,"start2":222,"length1":17,"length2":16}]],"length":1326,"saved":false}

@@ -47,8 +47,8 @@ var Fitagift = window.Fitagift = Ember.Application.create({
 * application init function will get the first questions
 */
 var readyFunction = function(){
-    questions = Fitagift.Question.find({order_by: 'grade'});
-    questions.on('didLoad', function(){
+    questions = Fitagift.Question.find({order_by: '-grade'});
+    questions.one('didLoad', function(){
         Fitagift.set('isLoading', false); 
         Fitagift.set('questions', questions);
     });

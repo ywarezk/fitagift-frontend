@@ -49,8 +49,8 @@ var Fitagift = window.Fitagift = Ember.Application.create({
 * application init function will get the first questions
 */
 var readyFunction = function(){
-    questions = Fitagift.Question.find({order_by: 'grade'});
-    questions.on('didLoad', function(){
+    questions = Fitagift.Question.find({order_by: '-grade'});
+    questions.one('didLoad', function(){
         Fitagift.set('isLoading', false); 
         Fitagift.set('questions', questions);
     });
@@ -154,11 +154,14 @@ Fitagift.Flatpage = DS.Model.extend({
  * @copyright: nerdeez Ltd.
  */
  
+var Fitagift = window.Fitagift;
+var DS = window.DS;
 Fitagift.Question = DS.Model.extend({
     title: DS.attr('string'),
     text: DS.attr('string'),
     grade: DS.attr('number'),
-    answers: DS.hasMany('Fitagift.Answer')
+    answers: DS.hasMany('Fitagift.Answer'),
+    question_type: DS.attr('number')
 });
 
 })();
@@ -174,13 +177,14 @@ Fitagift.Question = DS.Model.extend({
  * @copyright: nerdeez Ltd.
  */
  
+var Fitagift = window.Fitagift;
+var DS = window.DS;
 Fitagift.Answer = DS.Model.extend({
     title: DS.attr('string'),
     words: DS.attr('string'),
     query_relevent_question: DS.attr('string'),
-    goto_question: DS.belongsTo('Fitagift.Question'),
-    belong_to_question: DS.belongsTo('Fitagift.Question'),
-    answer_to_question_relevent: DS.belongsTo('Fitagift.Question')
+    goto_question: DS.attr('number'),
+    icon_class: DS.attr('string')
 });
 
 })();
@@ -285,10 +289,31 @@ Fitagift.ContactController = Ember.Controller.extend({
  * @version: 1.0
  * @copyright: nerdeez Ltd.
  */
- 
+
+var Fitagift = window.Fitagift;
+var Ember = window.Ember;
 Fitagift.QuestionController = Ember.ObjectController.extend({
     pickAnswer: function(answer){
-        console.log('pickAnswer');
+        
+        //push the current answer to the answers bank
+        var answers = Fitagift.get('answers');
+        answers.push(answer);
+        Fitagift.set('answers', answers);
+        
+        //if the answer has a redirection then redirect
+        var gotoQuestion = answer.get('goto_question');
+        if(gotoQuestion !== null){
+            questions = Fitagift.get('questions');
+            for(var i=0; i<questions.get('length'); i++){
+                if(questions.objectAt(i).get('id') == gotoQuestion){
+                    this.transitionToRoute('question', questions.objectAt(i));
+                    return;
+                }
+            }
+        }
+        else{
+            this.transitionToRoute('questions');
+        }
     }
 });
 
@@ -378,7 +403,9 @@ Fitagift.TermsRoute = Ember.Route.extend({
  */
 Fitagift.QuestionRoute = Ember.Route.extend({
     model: function(param){
-        return Fitagift.Question.find(param.question_id);
+        question = Fitagift.Question.find(param.question_id);
+        Fitagift.set('currentQuestion', question);
+        return question;
     }
 });
 
@@ -401,6 +428,7 @@ Fitagift.QuestionsRoute = Ember.Route.extend({
                 }
             }
         }
+        Fitagift.set('currentQuestion', nextQuestion);
         this.transitionTo('question', nextQuestion);
     }
 });
@@ -1531,6 +1559,10 @@ Nerdeez.Wormhole = Ember.Object.extend({
 /**
  * create the adapter type class
  */
+var Fitagift = window.Fitagift;
+var Nerdeez = window.Nerdeez;
+var SERVER_URL = window.SERVER_URL;
+var DS = window.DS;
 Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
     /**
      * adapter hook to set the server url
@@ -1549,16 +1581,17 @@ Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
         init: function(){
             this._super();
             this.mappings.set( 'Fitagift.Question', { answers: { embedded: 'load' } } );
+            this.mappings.set( 'Fitagift.Answer', { goto_question: { embedded: 'load' } } );
         }
     }),
     
     stopLoadingFunction: function(){}
-})
+});
 
 /**
  * create instance of adapter
  */
-adapter = Fitagift.Adapter.create();
+var adapter = Fitagift.Adapter.create();
 
 
 /**

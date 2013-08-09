@@ -10,6 +10,10 @@
 /**
  * create the adapter type class
  */
+var Fitagift = window.Fitagift;
+var Nerdeez = window.Nerdeez;
+var SERVER_URL = window.SERVER_URL;
+var DS = window.DS;
 Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
     /**
      * adapter hook to set the server url
@@ -28,16 +32,17 @@ Fitagift.Adapter = Nerdeez.DjangoTastypieAdapter.extend({
         init: function(){
             this._super();
             this.mappings.set( 'Fitagift.Question', { answers: { embedded: 'load' } } );
+            this.mappings.set( 'Fitagift.Answer', { goto_question: { embedded: 'load' } } );
         }
     }),
     
     stopLoadingFunction: function(){}
-})
+});
 
 /**
  * create instance of adapter
  */
-adapter = Fitagift.Adapter.create();
+var adapter = Fitagift.Adapter.create();
 
 
 /**

@@ -8378,6 +8378,25 @@ html, body {
   margin-right: 20px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000369}}
+.application .loading {
+  background-color: #CCCCCC;
+  height: 100%;
+  left: 0;
+  opacity: 0.42;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000378}}
+.application .loading i {
+  font-size: 168px;
+  left: 46%;
+  position: relative;
+  top: 40%;
+}
+
 /**
 * styles for the header
 * @version: 1.0
@@ -8559,11 +8578,16 @@ html, body {
 .question .button-container button {
   width: 40%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000315}}
+.question .button-container button i {
+  position: relative;
+  left: -10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000320}}
 .question .button-container button:nth-of-type(2n) {
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000323}}
 .question .button-container button:nth-of-type(2n-1) {
   float: left;
 }

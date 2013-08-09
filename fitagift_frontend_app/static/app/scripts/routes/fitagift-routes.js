@@ -9,6 +9,8 @@
 /**
  * define the routes urls here
  */
+var Fitagift = window.Fitagift;
+var Ember = window.Ember;
 Fitagift.Router.map(function () {
     this.route('about');
     this.route('contact');
@@ -51,7 +53,9 @@ Fitagift.TermsRoute = Ember.Route.extend({
  */
 Fitagift.QuestionRoute = Ember.Route.extend({
     model: function(param){
-        return Fitagift.Question.find(param.question_id);
+        var question = Fitagift.Question.find(param.question_id);
+        Fitagift.set('currentQuestion', question);
+        return question;
     }
 });
 
@@ -68,12 +72,13 @@ Fitagift.QuestionsRoute = Ember.Route.extend({
         }
         else{
             for(var i=0; i< questions.get('length'); i++){
-                question = quesitons.objectAt(i);
+                var question = questions.objectAt(i);
                 if(question.get('id') == currentQuestion.get('id')){
-                    nextQuestion = quesitons.objectAt(i+1);
+                    nextQuestion = questions.objectAt(i+1);
                 }
             }
         }
+        Fitagift.set('currentQuestion', nextQuestion);
         this.transitionTo('question', nextQuestion);
     }
 });
