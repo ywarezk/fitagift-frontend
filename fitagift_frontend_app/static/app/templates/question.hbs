@@ -11,7 +11,7 @@
                     </h5>
                 </div>
                 <div class="button-container top-buffer clearfix">
-                {{#if question_type==1}}
+                {{#ifCond question_type 1}}
                     {{#each answers}}
                         <button class="btn btn-large btn-primary btn-block btn-big-block" {{action "pickAnswer" this}}>
                         {{#if icon_class}}
@@ -20,7 +20,7 @@
                         {{title}}
                         </button>
                     {{/each}}
-                {{/if}}
+                {{/ifCond}}
                 </div>
             </div>
         </div>

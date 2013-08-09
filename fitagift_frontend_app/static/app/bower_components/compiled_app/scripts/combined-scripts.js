@@ -361,6 +361,8 @@ Fitagift.ContactView = Ember.View.extend({
 /**
  * define the routes urls here
  */
+var Fitagift = window.Fitagift;
+var Ember = window.Ember;
 Fitagift.Router.map(function () {
     this.route('about');
     this.route('contact');
@@ -403,7 +405,7 @@ Fitagift.TermsRoute = Ember.Route.extend({
  */
 Fitagift.QuestionRoute = Ember.Route.extend({
     model: function(param){
-        question = Fitagift.Question.find(param.question_id);
+        var question = Fitagift.Question.find(param.question_id);
         Fitagift.set('currentQuestion', question);
         return question;
     }
@@ -422,9 +424,9 @@ Fitagift.QuestionsRoute = Ember.Route.extend({
         }
         else{
             for(var i=0; i< questions.get('length'); i++){
-                question = quesitons.objectAt(i);
+                var question = questions.objectAt(i);
                 if(question.get('id') == currentQuestion.get('id')){
-                    nextQuestion = quesitons.objectAt(i+1);
+                    nextQuestion = questions.objectAt(i+1);
                 }
             }
         }
@@ -663,6 +665,8 @@ Nerdeez.DjangoTastypieSerializer = DS.JSONSerializer.extend({
 
 (function() {
 
+var Ember = window.Ember;
+
 /**
  * put this in each handlebar block to see if this is not the first item of the array
  * 
@@ -680,10 +684,9 @@ Nerdeez.DjangoTastypieSerializer = DS.JSONSerializer.extend({
  * @return {Handlebars.SafeString}
  */
 Ember.Handlebars.registerBoundHelper('notFirst', function(item, array, options) {
-  firstObject = array.objectAt(0);
+  var firstObject = array.objectAt(0);
   if(item != firstObject){
-      	//console.log('notFirst');
-	  	return new Ember.Handlebars.SafeString(options.hash.html);
+          return new Ember.Handlebars.SafeString(options.hash.html);
   }
   return '';
 });
@@ -706,15 +709,14 @@ Ember.Handlebars.registerBoundHelper('notFirst', function(item, array, options) 
  */
 Ember.Handlebars.registerBoundHelper('modZero', function(item, array, options) {
 	var whichItem = 0;
-	mod = options.hash.mod;
+	var mod = options.hash.mod;
 	for(var i=0; i<array.get('length'); i++){
-		currentObject = array.objectAt(i);
+		var currentObject = array.objectAt(i);
 		if(item == currentObject){
 			whichItem = i;
 		}
 	}
 	if(whichItem%mod == 0){
-		//console.log('modZero');
 		return new Ember.Handlebars.SafeString(options.hash.html);
 	}
 	return '';
@@ -738,9 +740,9 @@ Ember.Handlebars.registerBoundHelper('modZero', function(item, array, options) {
  */
 Ember.Handlebars.registerBoundHelper('modZeroExcludeFirst', function(item, array, options) {
 	var whichItem = 0;
-	mod = options.hash.mod;
+	var mod = options.hash.mod;
 	for(var i=0; i<array.get('length'); i++){
-		currentObject = array.objectAt(i);
+		var currentObject = array.objectAt(i);
 		if(item == currentObject){
 			whichItem = i;
 		}
@@ -770,7 +772,6 @@ Ember.Handlebars.registerBoundHelper('modZeroExcludeFirst', function(item, array
  */
 Ember.Handlebars.registerBoundHelper('isLast', function(item, array, options) {
 	if(item == array.objectAt(array.get('length') - 1) && array.get('isUpdating') == false){
-		//console.log('isLast');
 		return new Ember.Handlebars.SafeString(options.hash.html);
 	}
 	return '';	
@@ -793,7 +794,7 @@ Ember.Handlebars.registerBoundHelper('isLast', function(item, array, options) {
  * @return {Handlebars.SafeString}
  */
 Ember.Handlebars.registerBoundHelper('isFirst', function(item, array, options) {
-	firstObject = array.objectAt(0);
+	var firstObject = array.objectAt(0);
 	if(item == firstObject){
 		//console.log('isFirst');
 		return new Ember.Handlebars.SafeString(options.hash.html);
@@ -823,12 +824,12 @@ Ember.Handlebars.registerBoundHelper('status', function(item, options) {
     var message = options.hash.message;
     var html = '';
     if(isShow){
-        var html = '<div class="info">';
+        html = '<div class="info">';
         if(isSuccess){
-            html+='<div class="alert alert-success"><i class="icon-ok"></i>' + message + '</div>';
+            html+='<div class="alert alert-success"><i class="icon-ok"></i>' + message + '<a class="close" data-dismiss="alert">x</a></div>';
         }
         else{
-            html+='<div class="alert alert-danger"><i class="icon-remove"></i>' + message + '</div>';
+            html+='<div class="alert alert-danger"><i class="icon-remove"></i>' + message + '<a class="close" data-dismiss="alert">x</a></div>';
         }
         html+='</div>';
     }
@@ -855,9 +856,39 @@ Ember.Handlebars.registerBoundHelper('loading', function(item, options) {
     var isLoading = options.hash.isLoading;
     var html = '';
     if(isLoading){
-        var html = '<div class="loading"><i class="icon-spin icon-spinner"></i></div>';
+        html = '<div class="loading"><i class="icon-spin icon-spinner"></i></div>';
     }
     return new Handlebars.SafeString(html);
+});
+
+/**
+ * 
+ * will check if 2 vars are equal
+ * 
+ * usage
+ * 
+ * ```handlebar
+ * {{#ifCond v1 v2}}
+ * {{/ifCond}}
+ * ```
+ * 
+ * 
+ * @param {number|string} v1 the first variable
+ * @param {number|string} v2 the second variable
+ * @return {Handlebars.SafeString}
+ */
+Ember.Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+    if (Ember.typeOf(v2) === "string"){    
+        if(this.get(v1) == v2 || this.get(v1) == this.get(v2)) {
+            return options.fn(this);
+        }
+    }
+    else{
+        if(this.get(v1) == v2) {
+            return options.fn(this);
+        }
+    }
+    return options.inverse(this);
 });
 
 
