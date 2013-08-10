@@ -43,5 +43,18 @@
                 margin: 0 auto;
             }
         }
+        .other{
+            text-align: center;
+            margin-bottom: 20px;
+            button{
+                float: none !important;
+                clear: both !important;
+                margin: 0 auto !important;
+            }
+            input[type="text"]{
+                width: 64%;
+            }
+        }
     }
+    
 }

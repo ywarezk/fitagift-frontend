@@ -71,7 +71,7 @@ Fitagift.QuestionsRoute = Ember.Route.extend({
             nextQuestion = questions.objectAt(0);
         }
         else{
-            for(var i=0; i< questions.get('length'); i++){
+            for(var i=0; i< questions.get('length') - 1; i++){
                 var question = questions.objectAt(i);
                 if(question.get('id') == currentQuestion.get('id')){
                     nextQuestion = questions.objectAt(i+1);

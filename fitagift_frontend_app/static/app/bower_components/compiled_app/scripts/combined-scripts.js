@@ -181,9 +181,25 @@ Fitagift.Question = DS.Model.extend({
         return this.get('question_type') == 2;
     }.property('question_type'),
     
+    /**
+     * return true if the type of question is a combobox question
+     * @returns {Boolean}
+     */
+    isOpenQuestion: function(){
+        return this.get('question_type') == 3;
+    }.property('question_type'),
+    
+    /**
+     * return true if i need to display the next button when the question is displayed
+     * @returns {Boolean}
+     */
     isNextButton: function(){
         return this.get('question_type') == 2;
-    }.property('question_type')
+    }.property('question_type'),
+    
+    isShowOther: function(){
+        return this.get('answers.length') > 1 && this.get('isButtons');
+    }.property()
 });
 
 })();
@@ -321,12 +337,13 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
     otherText: null,
     isShowOtherText: false,
     placeholder: null,
+    openAnswer: null,
     pickAnswer: function(answer){
         if(answer == null){
             answer = this.get('currentAnswer');
         }
         
-        if(answer.get('is_other')){
+        if(answer && answer.get('is_other')){
             answer.set('words', this.get('otherText'));
         }
         
@@ -334,6 +351,13 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
         var answers = Fitagift.get('answers');
         answers.push(answer);
         Fitagift.set('answers', answers);
+        
+        if(!answer){
+            this.transitionToRoute('questions');
+            return;
+        }
+        
+        this.set('isShowOtherText', false);
         
         //if the answer has a redirection then redirect
         var gotoQuestion = answer.get('goto_question');
@@ -354,7 +378,12 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
     selectAnswer: function(){
         this.set('isShowOtherText', this.get('currentAnswer.is_other'));
         this.set('placeholder', this.get('currentAnswer.placeholder'));
-    }.observes('currentAnswer')
+    }.observes('currentAnswer'),
+    
+    toggleOtherText: function(){
+        isShow = this.get('isShowOtherText');
+        this.set('isShowOtherText', !isShow);
+    }
     
 });
 
@@ -464,7 +493,7 @@ Fitagift.QuestionsRoute = Ember.Route.extend({
             nextQuestion = questions.objectAt(0);
         }
         else{
-            for(var i=0; i< questions.get('length'); i++){
+            for(var i=0; i< questions.get('length') - 1; i++){
                 var question = questions.objectAt(i);
                 if(question.get('id') == currentQuestion.get('id')){
                     nextQuestion = questions.objectAt(i+1);

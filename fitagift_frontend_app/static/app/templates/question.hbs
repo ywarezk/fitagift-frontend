@@ -40,19 +40,25 @@
                 {{/if}}
                 <!-- end combobox -->
                 
-                <!-- other text field -->
-                {{#if isShowOtherText}}
-                    <div class="input-container">
-                    <label>{{placeholder}}</label>
-                    {{
-                    view
-                    Ember.TextField
-                    valueBinding="otherText"
-                    prompt="placeholder"
-                    }}
-                    </div>
+                {{#if isShowOther}}
+                <div class="top-buffer clearfix other">
+                    <button class="btn btn-large btn-primary btn-block btn-big-block" {{action "toggleOtherText"}}>
+                        <i class="icon-comment"></i>
+                        Other
+                    </button>
+                    {{#if isShowOtherText}}
+                        <label>{{placeholder}}</label>
+                        {{
+                        view
+                        Ember.TextField
+                        valueBinding="otherText"
+                        class="top-buffer"
+                        placeholder=controller.title
+                        }}
+                        </div>
+                    {{/if}}
+                </div>
                 {{/if}}
-                <!-- -->
                 
                 {{#if isNextButton}}
                     <div class="input-container">

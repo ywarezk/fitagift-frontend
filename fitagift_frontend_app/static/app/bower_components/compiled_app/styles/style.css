@@ -8621,6 +8621,21 @@ textarea {
   clear: both;
   margin: 0 auto;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000346}}
+.question .button-container .other {
+  text-align: center;
+  margin-bottom: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000349}}
+.question .button-container .other button {
+  float: none !important;
+  clear: both !important;
+  margin: 0 auto !important;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000354}}
+.question .button-container .other input[type="text"] {
+  width: 64%;
+}
 
 /* FONT PATH
  * -------------------------- */

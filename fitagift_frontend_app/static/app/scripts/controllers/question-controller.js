@@ -14,12 +14,13 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
     otherText: null,
     isShowOtherText: false,
     placeholder: null,
+    openAnswer: null,
     pickAnswer: function(answer){
         if(answer == null){
             answer = this.get('currentAnswer');
         }
         
-        if(answer.get('is_other')){
+        if(answer && answer.get('is_other')){
             answer.set('words', this.get('otherText'));
         }
         
@@ -27,6 +28,13 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
         var answers = Fitagift.get('answers');
         answers.push(answer);
         Fitagift.set('answers', answers);
+        
+        if(!answer){
+            this.transitionToRoute('questions');
+            return;
+        }
+        
+        this.set('isShowOtherText', false);
         
         //if the answer has a redirection then redirect
         var gotoQuestion = answer.get('goto_question');
@@ -47,6 +55,11 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
     selectAnswer: function(){
         this.set('isShowOtherText', this.get('currentAnswer.is_other'));
         this.set('placeholder', this.get('currentAnswer.placeholder'));
-    }.observes('currentAnswer')
+    }.observes('currentAnswer'),
+    
+    toggleOtherText: function(){
+        isShow = this.get('isShowOtherText');
+        this.set('isShowOtherText', !isShow);
+    }
     
 });

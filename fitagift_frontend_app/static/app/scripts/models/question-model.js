@@ -32,7 +32,23 @@ Fitagift.Question = DS.Model.extend({
         return this.get('question_type') == 2;
     }.property('question_type'),
     
+    /**
+     * return true if the type of question is a combobox question
+     * @returns {Boolean}
+     */
+    isOpenQuestion: function(){
+        return this.get('question_type') == 3;
+    }.property('question_type'),
+    
+    /**
+     * return true if i need to display the next button when the question is displayed
+     * @returns {Boolean}
+     */
     isNextButton: function(){
         return this.get('question_type') == 2;
-    }.property('question_type')
+    }.property('question_type'),
+    
+    isShowOther: function(){
+        return this.get('answers.length') > 6 && this.get('isButtons');
+    }.property()
 });
