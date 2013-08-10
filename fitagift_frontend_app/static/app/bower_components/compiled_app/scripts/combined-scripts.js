@@ -198,7 +198,7 @@ Fitagift.Question = DS.Model.extend({
     }.property('question_type'),
     
     isShowOther: function(){
-        return this.get('answers.length') > 1 && this.get('isButtons');
+        return this.get('answers.length') > 6 && this.get('isButtons');
     }.property()
 });
 
