@@ -23,6 +23,8 @@ Ember.View.reopen({
      */
     didInsertElement: function(){
         $('form.nerdeez-validation').validationEngine('attach');
+        
+        //$('.absolute-center').flexVerticalCenter();
     },
     
 });

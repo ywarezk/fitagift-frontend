@@ -1,4 +1,4 @@
-<div class="index question">
+<div class="index question absolute-center">
     <div class="account-container login stacked">
         <div class="">
             <div class="">
@@ -11,7 +11,9 @@
                     </h5>
                 </div>
                 <div class="button-container top-buffer clearfix">
-                {{#ifCond question_type 1}}
+                
+                <!-- begin buttons choices -->
+                {{#if isButtons}}
                     {{#each answers}}
                         <button class="btn btn-large btn-primary btn-block btn-big-block" {{action "pickAnswer" this}}>
                         {{#if icon_class}}
@@ -20,7 +22,46 @@
                         {{title}}
                         </button>
                     {{/each}}
-                {{/ifCond}}
+                {{/if}}
+                <!-- end buttons choices -->
+                
+                <!-- begin combobox -->
+                {{#if isCombobox}}
+                    <div class="input-container">
+                        {{view
+                        Ember.Select
+                        contentBinding="answers"
+                        selectionBinding="currentAnswer"
+                        optionLabelPath="content.title"
+                        optionValuePath="content.id"
+                        prompt="-----------"
+                        }}
+                    </div>
+                {{/if}}
+                <!-- end combobox -->
+                
+                <!-- other text field -->
+                {{#if isShowOtherText}}
+                    <div class="input-container">
+                    <label>{{placeholder}}</label>
+                    {{
+                    view
+                    Ember.TextField
+                    valueBinding="otherText"
+                    prompt="placeholder"
+                    }}
+                    </div>
+                {{/if}}
+                <!-- -->
+                
+                {{#if isNextButton}}
+                    <div class="input-container">
+                        <button class="btn btn-large btn-primary btn-block btn-big-block" {{action "pickAnswer"}}>
+                            Next
+                        </button>
+                    </div>
+                {{/if}}
+                
                 </div>
             </div>
         </div>

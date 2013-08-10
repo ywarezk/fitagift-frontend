@@ -10,7 +10,18 @@
 var Fitagift = window.Fitagift;
 var Ember = window.Ember;
 Fitagift.QuestionController = Ember.ObjectController.extend({
+    currentAnswer: null,
+    otherText: null,
+    isShowOtherText: false,
+    placeholder: null,
     pickAnswer: function(answer){
+        if(answer == null){
+            answer = this.get('currentAnswer');
+        }
+        
+        if(answer.get('is_other')){
+            answer.set('words', this.get('otherText'));
+        }
         
         //push the current answer to the answers bank
         var answers = Fitagift.get('answers');
@@ -31,5 +42,11 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
         else{
             this.transitionToRoute('questions');
         }
-    }
+    },
+    
+    selectAnswer: function(){
+        this.set('isShowOtherText', this.get('currentAnswer.is_other'));
+        this.set('placeholder', this.get('currentAnswer.placeholder'));
+    }.observes('currentAnswer')
+    
 });

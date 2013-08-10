@@ -8397,6 +8397,11 @@ html, body {
   top: 40%;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_application\.scss}line{font-family:\0000387}}
+textarea {
+  resize: none;
+}
+
 /**
 * styles for the header
 * @version: 1.0
@@ -8572,24 +8577,38 @@ html, body {
  */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000311}}
 .question .button-container {
+  text-align: center;
   width: 67% !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000314}}
 .question .button-container button {
   width: 40%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000316}}
 .question .button-container button i {
   position: relative;
   left: -10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000320}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000321}}
 .question .button-container button:nth-of-type(2n) {
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000324}}
 .question .button-container button:nth-of-type(2n-1) {
   float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000327}}
+.question .button-container .input-container {
+  margin: 0 auto;
+  width: 59%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000330}}
+.question .button-container .input-container select {
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/stickshift\/51bdff244382ecb3e500041c\/app-root\/data\/561939\/fitagift_frontend_app\/static\/app\/styles\/fitagift-styles\/_question\.scss}line{font-family:\0000333}}
+.question .button-container .input-container input[type="text"] {
+  width: 96%;
 }
 
 /* FONT PATH

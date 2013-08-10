@@ -89,6 +89,8 @@ Ember.View.reopen({
      */
     didInsertElement: function(){
         $('form.nerdeez-validation').validationEngine('attach');
+        
+        //$('.absolute-center').flexVerticalCenter();
     },
     
 });
@@ -161,7 +163,23 @@ Fitagift.Question = DS.Model.extend({
     text: DS.attr('string'),
     grade: DS.attr('number'),
     answers: DS.hasMany('Fitagift.Answer'),
-    question_type: DS.attr('number')
+    question_type: DS.attr('number'),
+    
+    /**
+     * return true if the type of question is a buttons type of question
+     * @returns {Boolean}
+     */
+    isButtons: function(){
+        return this.get('question_type') == 1;
+    }.property('question_type'),
+    
+    /**
+     * return true if the type of question is a combobox question
+     * @returns {Boolean}
+     */
+    isCombobox: function(){
+        return this.get('question_type') == 2;
+    }.property('question_type')
 });
 
 })();
@@ -184,7 +202,9 @@ Fitagift.Answer = DS.Model.extend({
     words: DS.attr('string'),
     query_relevent_question: DS.attr('string'),
     goto_question: DS.attr('number'),
-    icon_class: DS.attr('string')
+    icon_class: DS.attr('string'),
+    is_other: DS.attr('boolean'),
+    placeholder: DS.attr('string')
 });
 
 })();
@@ -293,7 +313,14 @@ Fitagift.ContactController = Ember.Controller.extend({
 var Fitagift = window.Fitagift;
 var Ember = window.Ember;
 Fitagift.QuestionController = Ember.ObjectController.extend({
+    currentAnswer: null,
+    otherText: null,
+    isShowOtherText: false,
+    placeholder: null,
     pickAnswer: function(answer){
+        if(answer == null){
+            answer = this.get('currentAnswer');
+        }
         
         //push the current answer to the answers bank
         var answers = Fitagift.get('answers');
@@ -314,7 +341,13 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
         else{
             this.transitionToRoute('questions');
         }
-    }
+    },
+    
+    selectAnswer: function(){
+        this.set('isShowOtherText', this.get('currentAnswer.is_other'));
+        this.set('placeholder', this.get('currentAnswer.placeholder'));
+    }.observes('currentAnswer')
+    
 });
 
 })();

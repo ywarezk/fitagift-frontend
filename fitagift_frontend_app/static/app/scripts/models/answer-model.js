@@ -14,5 +14,7 @@ Fitagift.Answer = DS.Model.extend({
     words: DS.attr('string'),
     query_relevent_question: DS.attr('string'),
     goto_question: DS.attr('number'),
-    icon_class: DS.attr('string')
+    icon_class: DS.attr('string'),
+    is_other: DS.attr('boolean'),
+    placeholder: DS.attr('string')
 });

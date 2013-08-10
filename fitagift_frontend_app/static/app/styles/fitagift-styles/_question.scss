@@ -9,6 +9,7 @@
  
 .question{
     .button-container{
+        text-align: center;
         width: 67% !important;
         button{
             width: 40%;
@@ -22,6 +23,19 @@
         }
         button:nth-of-type(2n-1){
             float: left;
+        }
+        .input-container{
+            margin: 0 auto;
+            width: 59%;
+            select{
+                width: 100%;
+            }
+            input[type="text"]{
+                width: 96%;
+            }
+            label{
+                text-align: left;
+            }
         }
     }
 }

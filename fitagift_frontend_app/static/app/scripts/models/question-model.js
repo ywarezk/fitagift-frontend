@@ -14,5 +14,25 @@ Fitagift.Question = DS.Model.extend({
     text: DS.attr('string'),
     grade: DS.attr('number'),
     answers: DS.hasMany('Fitagift.Answer'),
-    question_type: DS.attr('number')
+    question_type: DS.attr('number'),
+    
+    /**
+     * return true if the type of question is a buttons type of question
+     * @returns {Boolean}
+     */
+    isButtons: function(){
+        return this.get('question_type') == 1;
+    }.property('question_type'),
+    
+    /**
+     * return true if the type of question is a combobox question
+     * @returns {Boolean}
+     */
+    isCombobox: function(){
+        return this.get('question_type') == 2;
+    }.property('question_type'),
+    
+    isNextButton: function(){
+        return this.get('question_type') == 2;
+    }.property('question_type')
 });

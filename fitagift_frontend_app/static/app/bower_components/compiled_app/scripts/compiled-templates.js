@@ -181,7 +181,7 @@ function program1(depth0,data) {
 Ember.TEMPLATES["question"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
@@ -224,7 +224,42 @@ function program3(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<div class=\"index question\">\n    <div class=\"account-container login stacked\">\n        <div class=\"\">\n            <div class=\"\">\n                <div class=\"explain top-buffer\">\n                    <h1>\n                    ");
+function program5(depth0,data) {
+  
+  var buffer = '', hashContexts, hashTypes;
+  data.buffer.push("\n                    <div class=\"input-container\">\n                        ");
+  hashContexts = {'contentBinding': depth0,'selectionBinding': depth0,'optionLabelPath': depth0,'optionValuePath': depth0,'prompt': depth0};
+  hashTypes = {'contentBinding': "STRING",'selectionBinding': "STRING",'optionLabelPath': "STRING",'optionValuePath': "STRING",'prompt': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'contentBinding': ("answers"),
+    'selectionBinding': ("currentAnswer"),
+    'optionLabelPath': ("content.title"),
+    'optionValuePath': ("content.id"),
+    'prompt': ("-----------")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n                    </div>\n                ");
+  return buffer;
+  }
+
+function program7(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n                    <div class=\"input-container\">\n                    <label>");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "placeholder", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</label>\n                    ");
+  hashContexts = {'valueBinding': depth0,'prompt': depth0};
+  hashTypes = {'valueBinding': "STRING",'prompt': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
+    'valueBinding': ("otherText"),
+    'prompt': ("placeholder")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n                    </div>\n                ");
+  return buffer;
+  }
+
+  data.buffer.push("<div class=\"index question absolute-center\">\n    <div class=\"account-container login stacked\">\n        <div class=\"\">\n            <div class=\"\">\n                <div class=\"explain top-buffer\">\n                    <h1>\n                    ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "title", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -232,13 +267,22 @@ function program3(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "text", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                    </h5>\n                </div>\n                <div class=\"button-container top-buffer clearfix\">\n                ");
+  data.buffer.push("\n                    </h5>\n                </div>\n                <div class=\"button-container top-buffer clearfix\">\n                \n                <!-- begin buttons choices -->\n                ");
   hashTypes = {};
   hashContexts = {};
-  options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["ID","INTEGER"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers.ifCond),stack1 ? stack1.call(depth0, "question_type", 1, options) : helperMissing.call(depth0, "ifCond", "question_type", 1, options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
+  stack1 = helpers['if'].call(depth0, "isButtons", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                <!-- end buttons choices -->\n                \n                <!-- begin combobox -->\n                ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "isCombobox", {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                <!-- end combobox -->\n                \n                <!-- other text field -->\n                ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "isShowOtherText", {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                <!-- -->\n                \n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
   return buffer;
   
 });
