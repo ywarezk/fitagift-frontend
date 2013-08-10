@@ -179,6 +179,10 @@ Fitagift.Question = DS.Model.extend({
      */
     isCombobox: function(){
         return this.get('question_type') == 2;
+    }.property('question_type'),
+    
+    isNextButton: function(){
+        return this.get('question_type') == 2;
     }.property('question_type')
 });
 
@@ -320,6 +324,10 @@ Fitagift.QuestionController = Ember.ObjectController.extend({
     pickAnswer: function(answer){
         if(answer == null){
             answer = this.get('currentAnswer');
+        }
+        
+        if(answer.get('is_other')){
+            answer.set('words', this.get('otherText'));
         }
         
         //push the current answer to the answers bank

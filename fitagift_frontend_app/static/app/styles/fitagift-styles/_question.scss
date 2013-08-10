@@ -25,7 +25,8 @@
             float: left;
         }
         .input-container{
-            margin: 0 auto;
+            margin: 0 auto 10px;
+            text-align: center;
             width: 59%;
             select{
                 width: 100%;
@@ -35,6 +36,11 @@
             }
             label{
                 text-align: left;
+            }
+            button{
+                float: none;
+                clear: both; 
+                margin: 0 auto;
             }
         }
     }

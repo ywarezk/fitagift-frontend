@@ -259,6 +259,17 @@ function program7(depth0,data) {
   return buffer;
   }
 
+function program9(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n                    <div class=\"input-container\">\n                        <button class=\"btn btn-large btn-primary btn-block btn-big-block\" ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "pickAnswer", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n                            Next\n                        </button>\n                    </div>\n                ");
+  return buffer;
+  }
+
   data.buffer.push("<div class=\"index question absolute-center\">\n    <div class=\"account-container login stacked\">\n        <div class=\"\">\n            <div class=\"\">\n                <div class=\"explain top-buffer\">\n                    <h1>\n                    ");
   hashTypes = {};
   hashContexts = {};
@@ -282,7 +293,12 @@ function program7(depth0,data) {
   hashContexts = {};
   stack1 = helpers['if'].call(depth0, "isShowOtherText", {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                <!-- -->\n                \n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
+  data.buffer.push("\n                <!-- -->\n                \n                ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "isNextButton", {hash:{},inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                \n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
   return buffer;
   
 });
